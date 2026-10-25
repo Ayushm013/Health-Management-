@@ -1,0 +1,1365 @@
+{
+  "users": [
+    {
+      "id": "usr_admin_1",
+      "name": "Dr. A. Swaminathan (Medical Superintendent)",
+      "email": "admin@arogyapulse.in",
+      "passwordHash": "$2b$10$.tt05bp4/4FHKDLtZNoBK.WRe3thgNR8kQ22QAKMh6h0MfqLJod/y",
+      "phone": "+91 98110 24890",
+      "role": "admin",
+      "status": "active",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "profileImage": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "id": "usr_doc_1",
+      "name": "Dr. Rajesh K. Sharma, MD, DM",
+      "email": "dr.rajesh@arogyapulse.in",
+      "passwordHash": "$2b$10$JRZ97ZW2rHgTE7ocK9HnIuxzf936OBEVl0hKcmibw3aMG2cuLAmiy",
+      "phone": "+91 98101 44290",
+      "role": "doctor",
+      "status": "active",
+      "profileImage": "/src/assets/images/avatar_doctor_rajesh_1792763082295.jpg",
+      "createdAt": "2026-01-10T09:30:00.000Z",
+      "updatedAt": "2026-01-10T09:30:00.000Z"
+    },
+    {
+      "id": "usr_doc_2",
+      "name": "Dr. Ananya Iyer, MD, DM",
+      "email": "dr.ananya@arogyapulse.in",
+      "passwordHash": "$2b$10$JRZ97ZW2rHgTE7ocK9HnIuxzf936OBEVl0hKcmibw3aMG2cuLAmiy",
+      "phone": "+91 98450 78190",
+      "role": "doctor",
+      "status": "active",
+      "profileImage": "/src/assets/images/avatar_doctor_ananya_1792763084585.jpg",
+      "createdAt": "2026-01-15T11:00:00.000Z",
+      "updatedAt": "2026-01-15T11:00:00.000Z"
+    },
+    {
+      "id": "usr_doc_3",
+      "name": "Dr. Vikramaditya Sen, MD, DM",
+      "email": "dr.sen@arogyapulse.in",
+      "passwordHash": "$2b$10$JRZ97ZW2rHgTE7ocK9HnIuxzf936OBEVl0hKcmibw3aMG2cuLAmiy",
+      "phone": "+91 99200 62145",
+      "role": "doctor",
+      "status": "active",
+      "profileImage": "https://images.unsplash.com/photo-1594824813633-89047910e53a?auto=format&fit=crop&w=400&q=80",
+      "createdAt": "2026-02-01T10:15:00.000Z",
+      "updatedAt": "2026-02-01T10:15:00.000Z"
+    },
+    {
+      "id": "usr_pat_1",
+      "name": "Rohan Verma",
+      "email": "rohan@arogyapulse.in",
+      "passwordHash": "$2b$10$8M6O.sIsWy7.tlBPmTmnH.ES/iVLTmswoyRowYYg9ROzHikCElqLe",
+      "phone": "+91 98452 33104",
+      "role": "patient",
+      "status": "active",
+      "profileImage": "/src/assets/images/avatar_patient_rohan_1792763084312.jpg",
+      "createdAt": "2026-02-10T14:20:00.000Z",
+      "updatedAt": "2026-02-10T14:20:00.000Z"
+    },
+    {
+      "id": "usr_pat_2",
+      "name": "Priya Patel",
+      "email": "priya@arogyapulse.in",
+      "passwordHash": "$2b$10$8M6O.sIsWy7.tlBPmTmnH.ES/iVLTmswoyRowYYg9ROzHikCElqLe",
+      "phone": "+91 98250 88912",
+      "role": "patient",
+      "status": "active",
+      "profileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      "createdAt": "2026-02-15T16:00:00.000Z",
+      "updatedAt": "2026-02-15T16:00:00.000Z"
+    }
+  ],
+  "doctorProfiles": [
+    {
+      "id": "doc_prof_1",
+      "userId": "usr_doc_1",
+      "specialization": "Cardiology",
+      "qualification": "MBBS (MAMC), MD (Medicine), DM (Cardiology, AIIMS Delhi), FACC",
+      "experience": 16,
+      "licenseNumber": "DMC-2008-44910 (Delhi Medical Council)",
+      "clinic": "Apollo Heart Centre, Sarita Vihar, New Delhi",
+      "consultationFee": 1200,
+      "bio": "Senior Consultant Interventional Cardiologist specializing in preventive cardiology, coronary angioplasty, hypertensive heart disease, and heart failure management.",
+      "verificationStatus": "verified",
+      "availableDays": [
+        "Monday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "availableSlots": [
+        "09:30 AM",
+        "11:00 AM",
+        "12:30 PM",
+        "03:00 PM",
+        "04:30 PM",
+        "05:30 PM"
+      ],
+      "languages": [
+        "English",
+        "Hindi",
+        "Punjabi"
+      ]
+    },
+    {
+      "id": "doc_prof_2",
+      "userId": "usr_doc_2",
+      "specialization": "Neurology",
+      "qualification": "MBBS, MD (Medicine), DM (Neurology, NIMHANS Bengaluru)",
+      "experience": 18,
+      "licenseNumber": "KMC-58210 (Karnataka Medical Council)",
+      "clinic": "Manipal Hospital, Old Airport Road, Bengaluru",
+      "consultationFee": 1500,
+      "bio": "Chief Neurologist with clinical fellowship from NIMHANS. Expert in migraine headache syndromes, peripheral neuropathy, epilepsy, and neuro-vascular health.",
+      "verificationStatus": "verified",
+      "availableDays": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Saturday"
+      ],
+      "availableSlots": [
+        "10:00 AM",
+        "11:30 AM",
+        "02:00 PM",
+        "03:30 PM",
+        "05:00 PM"
+      ],
+      "languages": [
+        "English",
+        "Hindi",
+        "Kannada",
+        "Tamil"
+      ]
+    },
+    {
+      "id": "doc_prof_3",
+      "userId": "usr_doc_3",
+      "specialization": "Endocrinology & Diabetology",
+      "qualification": "MBBS, MD (Internal Medicine), DM (Endocrinology, PGI Chandigarh)",
+      "experience": 12,
+      "licenseNumber": "HN-22041 (Haryana Medical Council)",
+      "clinic": "Fortis Memorial Research Institute, Sector 44, Gurugram",
+      "consultationFee": 900,
+      "bio": "Consultant Diabetologist and Endocrinologist managing complex glycemic variability, insulin resistance, thyroid nodules, and therapeutic lifestyle guidance.",
+      "verificationStatus": "verified",
+      "availableDays": [
+        "Monday",
+        "Tuesday",
+        "Friday",
+        "Saturday"
+      ],
+      "availableSlots": [
+        "10:00 AM",
+        "11:30 AM",
+        "02:30 PM",
+        "04:00 PM"
+      ],
+      "languages": [
+        "English",
+        "Hindi",
+        "Bengali"
+      ]
+    }
+  ],
+  "patientProfiles": [
+    {
+      "id": "pat_prof_1",
+      "userId": "usr_pat_1",
+      "abhaId": "91-4421-8890-1204",
+      "abhaAddress": "rohan.verma@abdm",
+      "dateOfBirth": "1994-06-14",
+      "gender": "male",
+      "bloodGroup": "B+",
+      "address": "Flat 402, Shanti Nilayam, 12th Main, Indiranagar, Bengaluru, Karnataka - 560038",
+      "emergencyContact": {
+        "name": "Kavita Verma",
+        "relationship": "Spouse",
+        "phone": "+91 98450 11982"
+      },
+      "allergies": [
+        "Penicillin",
+        "Sulfa Drugs"
+      ],
+      "chronicConditions": [
+        "Stage 1 Essential Hypertension",
+        "Dust Allergic Rhinitis"
+      ],
+      "medicalHistory": [
+        "Laparoscopic Appendectomy (AIIMS New Delhi, 2018)",
+        "Sprained Ankle Ligament (2022)"
+      ]
+    },
+    {
+      "id": "pat_prof_2",
+      "userId": "usr_pat_2",
+      "abhaId": "91-3819-2041-9941",
+      "abhaAddress": "priya.patel@abdm",
+      "dateOfBirth": "1981-11-20",
+      "gender": "female",
+      "bloodGroup": "O+",
+      "address": "24 Shivalik Bungalows, Near Commerce Six Roads, Navrangpura, Ahmedabad, Gujarat - 380009",
+      "emergencyContact": {
+        "name": "Nilesh Patel",
+        "relationship": "Spouse",
+        "phone": "+91 98251 77319"
+      },
+      "allergies": [
+        "Aspirin (Mild Gastro Upset)"
+      ],
+      "chronicConditions": [
+        "Type-2 Diabetes Mellitus",
+        "Dyslipidemia"
+      ],
+      "medicalHistory": [
+        "Gallbladder Cholecystectomy (2020)"
+      ]
+    }
+  ],
+  "appointments": [
+    {
+      "id": "apt_101",
+      "patientId": "usr_pat_1",
+      "patientName": "Rohan Verma",
+      "patientEmail": "rohan@arogyapulse.in",
+      "patientAge": 32,
+      "patientGender": "male",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "doctorSpecialization": "Cardiology",
+      "doctorClinic": "Apollo Heart Centre, Sarita Vihar, New Delhi",
+      "doctorFee": 1200,
+      "appointmentDate": "2026-10-26",
+      "appointmentTime": "11:00 AM",
+      "type": "in-person",
+      "reason": "Quarterly review of ambulatory blood pressure and ECG follow-up.",
+      "status": "confirmed",
+      "notes": "Please bring recent BP reading chart and morning medication log.",
+      "createdAt": "2026-10-18T10:00:00.000Z"
+    },
+    {
+      "id": "apt_102",
+      "patientId": "usr_pat_1",
+      "patientName": "Rohan Verma",
+      "patientEmail": "rohan@arogyapulse.in",
+      "patientAge": 32,
+      "patientGender": "male",
+      "doctorId": "usr_doc_2",
+      "doctorName": "Dr. Ananya Iyer, MD, DM",
+      "doctorSpecialization": "Neurology",
+      "doctorClinic": "Manipal Hospital, Old Airport Road, Bengaluru",
+      "doctorFee": 1500,
+      "appointmentDate": "2026-11-04",
+      "appointmentTime": "02:00 PM",
+      "type": "video",
+      "reason": "Screen-time induced tension headaches and cervical posture discomfort.",
+      "status": "pending",
+      "notes": "Tele-consultation video link will be active 10 minutes prior.",
+      "createdAt": "2026-10-20T14:15:00.000Z"
+    },
+    {
+      "id": "apt_103",
+      "patientId": "usr_pat_1",
+      "patientName": "Rohan Verma",
+      "patientEmail": "rohan@arogyapulse.in",
+      "patientAge": 32,
+      "patientGender": "male",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "doctorSpecialization": "Cardiology",
+      "doctorClinic": "Apollo Heart Centre, New Delhi",
+      "doctorFee": 1200,
+      "appointmentDate": "2026-08-14",
+      "appointmentTime": "12:30 PM",
+      "type": "in-person",
+      "reason": "Initial consultation for borderline blood pressure elevation.",
+      "status": "completed",
+      "notes": "Completed in-clinic 12-lead ECG and lipid evaluation.",
+      "consultationNotes": "Resting BP recorded at 134/86 mmHg. Normal sinus rhythm on ECG. Initiated low-dose Telmisartan 40mg. Advised low-sodium Indian home food (कम नमक, तेल का नियंत्रित सेवन) and 30 minutes brisk walking / Pranayama daily.",
+      "createdAt": "2026-08-01T09:00:00.000Z"
+    },
+    {
+      "id": "apt_104",
+      "patientId": "usr_pat_2",
+      "patientName": "Priya Patel",
+      "patientEmail": "priya@arogyapulse.in",
+      "patientAge": 45,
+      "patientGender": "female",
+      "doctorId": "usr_doc_3",
+      "doctorName": "Dr. Vikramaditya Sen, MD, DM",
+      "doctorSpecialization": "Endocrinology & Diabetology",
+      "doctorClinic": "Fortis Memorial Hospital, Gurugram",
+      "doctorFee": 900,
+      "appointmentDate": "2026-10-25",
+      "appointmentTime": "10:00 AM",
+      "type": "in-person",
+      "reason": "Semi-annual HbA1c review and insulin sensitivity evaluation.",
+      "status": "confirmed",
+      "notes": "10 hours overnight fasting required for lab panel.",
+      "createdAt": "2026-10-15T11:20:00.000Z"
+    },
+    {
+      "id": "apt_1792935604467",
+      "patientId": "usr_pat_1",
+      "patientName": "Rohan Verma",
+      "patientEmail": "rohan@arogyapulse.in",
+      "patientPhone": "+91 98452 33104",
+      "patientAge": 32,
+      "patientGender": "male",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "doctorSpecialization": "Cardiology",
+      "doctorClinic": "Apollo Heart Centre, Sarita Vihar, New Delhi",
+      "doctorFee": 1200,
+      "appointmentDate": "2026-11-20",
+      "appointmentTime": "11:30 AM",
+      "type": "video",
+      "reason": "Automated test consultation",
+      "status": "cancelled",
+      "notes": "",
+      "createdAt": "2026-10-25T13:40:04.467Z"
+    }
+  ],
+  "medicalRecords": [
+    {
+      "id": "rec_201",
+      "patientId": "usr_pat_1",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "title": "Complete Lipid Profile & Fasting Blood Sugar",
+      "type": "blood_report",
+      "fileUrl": "#download-rec-201",
+      "fileName": "DrLalPathLabs_LipidProfile_Aug2026.pdf",
+      "fileSize": "1.4 MB",
+      "description": "Fasting Plasma Glucose: 92 mg/dL. Total Cholesterol: 178 mg/dL, HDL: 52 mg/dL, LDL: 104 mg/dL, Triglycerides: 142 mg/dL. Serum Creatinine: 0.9 mg/dL (Normal).",
+      "recordDate": "2026-08-11",
+      "hospital": "Dr. Lal PathLabs (National Reference Lab, New Delhi)",
+      "createdAt": "2026-08-11T16:00:00.000Z"
+    },
+    {
+      "id": "rec_202",
+      "patientId": "usr_pat_1",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "title": "12-Lead Diagnostic Electrocardiogram (ECG)",
+      "type": "blood_report",
+      "fileUrl": "#download-rec-202",
+      "fileName": "Apollo_Cardio_12LeadECG_Aug2026.pdf",
+      "fileSize": "2.1 MB",
+      "description": "Normal sinus rhythm at 72 bpm. PR interval 152 ms, QRS duration 88 ms. No ST segment depression or T-wave inversion. Normal axis.",
+      "recordDate": "2026-08-14",
+      "hospital": "Apollo Heart Centre (Sarita Vihar, New Delhi)",
+      "createdAt": "2026-08-14T12:00:00.000Z"
+    },
+    {
+      "id": "rec_203",
+      "patientId": "usr_pat_1",
+      "doctorId": "usr_doc_2",
+      "doctorName": "Dr. Ananya Iyer, MD, DM",
+      "title": "Digital Chest Radiograph (PA View)",
+      "type": "x_ray",
+      "fileUrl": "#download-rec-203",
+      "fileName": "Manipal_Chest_XRay_PA_2026.pdf",
+      "fileSize": "3.6 MB",
+      "description": "Bilateral lung parenchyma clear without focal consolidation or pleural effusion. Cardiothoracic ratio within normal limits (<0.5). Normal bronchovascular markings.",
+      "recordDate": "2026-05-20",
+      "hospital": "Manipal Hospital Diagnostic Radiology (Bengaluru)",
+      "createdAt": "2026-05-20T14:30:00.000Z"
+    },
+    {
+      "id": "rec_204",
+      "patientId": "usr_pat_1",
+      "title": "Laparoscopic Appendectomy Discharge Summary",
+      "type": "discharge_summary",
+      "fileUrl": "#download-rec-204",
+      "fileName": "AIIMS_Discharge_Summary_Appendectomy.pdf",
+      "fileSize": "920 KB",
+      "description": "Admitted with acute appendicitis. Underwent uneventful 3-port laparoscopic appendectomy under GA. Post-operative period uneventful. Sutures removed on POD 7.",
+      "recordDate": "2018-09-24",
+      "hospital": "AIIMS (All India Institute of Medical Sciences, New Delhi)",
+      "createdAt": "2026-02-11T10:00:00.000Z"
+    }
+  ],
+  "prescriptions": [
+    {
+      "id": "rx_301",
+      "patientId": "usr_pat_1",
+      "patientName": "Rohan Verma",
+      "patientAbhaId": "91-4421-8890-1204",
+      "patientAge": 32,
+      "patientGender": "male",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "doctorSpecialization": "Cardiology",
+      "doctorLicense": "DMC-2008-44910 (Delhi Medical Council / NMC)",
+      "doctorClinic": "Apollo Heart Centre, Sarita Vihar, New Delhi",
+      "doctorPhone": "+91 98101 44290",
+      "diagnosis": "Primary Essential Hypertension (Stage 1) - Borderline Grade 1.",
+      "notes": "कम नमक का सेवन (< 2,000 mg/day). नियमित सुबह की सैर या सूर्य नमस्कार 30 मिनट. सप्ताह में 2 बार रक्तचाप (BP) की जांच करें.",
+      "prescriptionDate": "2026-08-14",
+      "items": [
+        {
+          "id": "item_1",
+          "medicineName": "Telmisartan Tablets IP (Telma 40)",
+          "dosage": "40 mg",
+          "frequency": "1-0-0 (Once daily morning / सुबह नाश्ते के बाद)",
+          "duration": "90 days",
+          "instructions": "Take in the morning with a full glass of water after light breakfast."
+        },
+        {
+          "id": "item_2",
+          "medicineName": "Pantoprazole Gastro-Resistant Tab IP (Pan 40)",
+          "dosage": "40 mg",
+          "frequency": "1-0-0 (Once daily early morning / खाली पेट)",
+          "duration": "30 days",
+          "instructions": "Take early morning on an empty stomach with plain water (खाली पेट)."
+        },
+        {
+          "id": "item_3",
+          "medicineName": "Coenzyme Q10 Softgel Capsule",
+          "dosage": "100 mg",
+          "frequency": "0-1-0 (Once daily afternoon / दोपहर भोजन के बाद)",
+          "duration": "90 days",
+          "instructions": "Vascular antioxidant adjunct. Take after afternoon lunch."
+        }
+      ]
+    },
+    {
+      "id": "rx_1792935456398",
+      "patientId": "usr_pat_1",
+      "patientName": "Rohan Verma",
+      "patientAge": 32,
+      "patientGender": "male",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "doctorSpecialization": "Cardiology",
+      "doctorLicense": "DMC-2008-44910 (Delhi Medical Council)",
+      "doctorClinic": "Apollo Heart Centre, Sarita Vihar, New Delhi",
+      "doctorPhone": "+91 98101 44290",
+      "diagnosis": "Seasonal allergic rhinitis (Automated Test)",
+      "notes": "Drink warm water, take steam inhalation daily.",
+      "prescriptionDate": "2026-10-25",
+      "items": [
+        {
+          "id": "rx_item_1792935456398_0",
+          "medicineName": "Cetirizine 10mg (Cetzine)",
+          "dosage": "10 mg",
+          "frequency": "Once at night",
+          "duration": "5 days",
+          "instructions": "Take after dinner with water"
+        }
+      ]
+    },
+    {
+      "id": "rx_1792935604476",
+      "patientId": "usr_pat_1",
+      "patientName": "Rohan Verma",
+      "patientAge": 32,
+      "patientGender": "male",
+      "doctorId": "usr_doc_1",
+      "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
+      "doctorSpecialization": "Cardiology",
+      "doctorLicense": "DMC-2008-44910 (Delhi Medical Council)",
+      "doctorClinic": "Apollo Heart Centre, Sarita Vihar, New Delhi",
+      "doctorPhone": "+91 98101 44290",
+      "diagnosis": "Seasonal allergic rhinitis (Automated Test)",
+      "notes": "Drink warm water, take steam inhalation daily.",
+      "prescriptionDate": "2026-10-25",
+      "items": [
+        {
+          "id": "rx_item_1792935604476_0",
+          "medicineName": "Cetirizine 10mg (Cetzine)",
+          "dosage": "10 mg",
+          "frequency": "Once at night",
+          "duration": "5 days",
+          "instructions": "Take after dinner with water"
+        }
+      ]
+    }
+  ],
+  "medications": [
+    {
+      "id": "med_401",
+      "patientId": "usr_pat_1",
+      "prescriptionItemId": "item_1",
+      "medicineName": "Telmisartan 40mg (Telma 40)",
+      "dosage": "40 mg",
+      "frequency": "Once daily morning",
+      "startDate": "2026-08-14",
+      "endDate": "2026-11-14",
+      "time": "08:30 AM",
+      "quantity": 90,
+      "remainingQuantity": 26,
+      "instructions": "Take in morning after breakfast with water. Avoid excess sodium / pickles (अचार).",
+      "prescribingDoctor": "Dr. Rajesh K. Sharma, MD, DM",
+      "status": "active",
+      "adherenceLogs": [
+        {
+          "date": "2026-10-22",
+          "status": "taken",
+          "timestamp": "2026-10-22T08:35:00Z"
+        },
+        {
+          "date": "2026-10-21",
+          "status": "taken",
+          "timestamp": "2026-10-21T08:40:00Z"
+        },
+        {
+          "date": "2026-10-20",
+          "status": "taken",
+          "timestamp": "2026-10-20T08:30:00Z"
+        },
+        {
+          "date": "2026-10-19",
+          "status": "skipped",
+          "timestamp": "2026-10-19T13:00:00Z"
+        },
+        {
+          "date": "2026-10-18",
+          "status": "taken",
+          "timestamp": "2026-10-18T08:45:00Z"
+        },
+        {
+          "date": "2026-10-17",
+          "status": "taken",
+          "timestamp": "2026-10-17T08:30:00Z"
+        },
+        {
+          "date": "2026-10-25",
+          "status": "taken",
+          "timestamp": "2026-10-25T13:40:04.463Z"
+        }
+      ]
+    },
+    {
+      "id": "med_402",
+      "patientId": "usr_pat_1",
+      "prescriptionItemId": "item_2",
+      "medicineName": "Pantoprazole 40mg (Pan 40)",
+      "dosage": "40 mg",
+      "frequency": "Once daily empty stomach",
+      "startDate": "2026-09-01",
+      "endDate": "2026-12-01",
+      "time": "07:30 AM",
+      "quantity": 30,
+      "remainingQuantity": 14,
+      "instructions": "Take early morning on empty stomach (खाली पेट) with water.",
+      "prescribingDoctor": "Dr. Rajesh K. Sharma, MD, DM",
+      "status": "active",
+      "adherenceLogs": [
+        {
+          "date": "2026-10-22",
+          "status": "taken",
+          "timestamp": "2026-10-22T07:35:00Z"
+        },
+        {
+          "date": "2026-10-21",
+          "status": "taken",
+          "timestamp": "2026-10-21T07:40:00Z"
+        }
+      ]
+    },
+    {
+      "id": "med_403",
+      "patientId": "usr_pat_1",
+      "medicineName": "Paracetamol 650mg (Dolo 650)",
+      "dosage": "650 mg",
+      "frequency": "SOS (As needed for headache or fever)",
+      "startDate": "2026-07-01",
+      "endDate": "2026-07-05",
+      "time": "02:00 PM",
+      "quantity": 15,
+      "remainingQuantity": 8,
+      "instructions": "Take only when necessary for headache or mild body ache after food.",
+      "prescribingDoctor": "Dr. Ananya Iyer, MD, DM",
+      "status": "completed",
+      "adherenceLogs": []
+    },
+    {
+      "id": "med_1792935456399_379",
+      "patientId": "usr_pat_1",
+      "prescriptionItemId": "rx_item_1792935456398_0",
+      "medicineName": "Cetirizine 10mg (Cetzine)",
+      "dosage": "10 mg",
+      "frequency": "Once at night",
+      "startDate": "2026-10-25",
+      "endDate": "2026-11-24",
+      "time": "08:00 AM",
+      "quantity": 30,
+      "remainingQuantity": 30,
+      "instructions": "Take after dinner with water",
+      "prescribingDoctor": "Dr. Rajesh K. Sharma, MD, DM",
+      "status": "active",
+      "adherenceLogs": []
+    },
+    {
+      "id": "med_1792935604476_421",
+      "patientId": "usr_pat_1",
+      "prescriptionItemId": "rx_item_1792935604476_0",
+      "medicineName": "Cetirizine 10mg (Cetzine)",
+      "dosage": "10 mg",
+      "frequency": "Once at night",
+      "startDate": "2026-10-25",
+      "endDate": "2026-11-24",
+      "time": "08:00 AM",
+      "quantity": 30,
+      "remainingQuantity": 30,
+      "instructions": "Take after dinner with water",
+      "prescribingDoctor": "Dr. Rajesh K. Sharma, MD, DM",
+      "status": "active",
+      "adherenceLogs": []
+    }
+  ],
+  "healthMetrics": [
+    {
+      "id": "met_w_1",
+      "patientId": "usr_pat_1",
+      "metricType": "weight",
+      "value": 68.5,
+      "unit": "kg",
+      "recordedAt": "2026-07-01T08:00:00Z",
+      "notes": "Baseline summer weigh-in"
+    },
+    {
+      "id": "met_w_2",
+      "patientId": "usr_pat_1",
+      "metricType": "weight",
+      "value": 68,
+      "unit": "kg",
+      "recordedAt": "2026-08-01T08:00:00Z"
+    },
+    {
+      "id": "met_w_3",
+      "patientId": "usr_pat_1",
+      "metricType": "weight",
+      "value": 67.2,
+      "unit": "kg",
+      "recordedAt": "2026-09-01T08:00:00Z",
+      "notes": "Initiated 30 min morning walk + Surya Namaskar"
+    },
+    {
+      "id": "met_w_4",
+      "patientId": "usr_pat_1",
+      "metricType": "weight",
+      "value": 66.8,
+      "unit": "kg",
+      "recordedAt": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "met_w_5",
+      "patientId": "usr_pat_1",
+      "metricType": "weight",
+      "value": 66.2,
+      "unit": "kg",
+      "recordedAt": "2026-10-22T08:00:00Z",
+      "notes": "Healthy weight reduction on track"
+    },
+    {
+      "id": "met_h_1",
+      "patientId": "usr_pat_1",
+      "metricType": "height",
+      "value": 172,
+      "unit": "cm",
+      "recordedAt": "2026-07-01T08:00:00Z",
+      "notes": "Stadiometer clinic measurement"
+    },
+    {
+      "id": "met_bp_1",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_pressure",
+      "value": 136,
+      "systolic": 136,
+      "diastolic": 88,
+      "unit": "mmHg",
+      "recordedAt": "2026-08-01T08:30:00Z",
+      "isOutOfRange": true,
+      "notes": "Pre-medication evaluation"
+    },
+    {
+      "id": "met_bp_2",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_pressure",
+      "value": 128,
+      "systolic": 128,
+      "diastolic": 84,
+      "unit": "mmHg",
+      "recordedAt": "2026-08-20T08:30:00Z",
+      "isOutOfRange": false
+    },
+    {
+      "id": "met_bp_3",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_pressure",
+      "value": 124,
+      "systolic": 124,
+      "diastolic": 80,
+      "unit": "mmHg",
+      "recordedAt": "2026-09-15T08:30:00Z",
+      "isOutOfRange": false
+    },
+    {
+      "id": "met_bp_4",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_pressure",
+      "value": 120,
+      "systolic": 120,
+      "diastolic": 78,
+      "unit": "mmHg",
+      "recordedAt": "2026-10-05T08:30:00Z",
+      "isOutOfRange": false
+    },
+    {
+      "id": "met_bp_5",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_pressure",
+      "value": 118,
+      "systolic": 118,
+      "diastolic": 76,
+      "unit": "mmHg",
+      "recordedAt": "2026-10-22T08:30:00Z",
+      "isOutOfRange": false,
+      "notes": "Resting morning reading at home"
+    },
+    {
+      "id": "met_hr_1",
+      "patientId": "usr_pat_1",
+      "metricType": "heart_rate",
+      "value": 76,
+      "unit": "bpm",
+      "recordedAt": "2026-08-01T08:30:00Z"
+    },
+    {
+      "id": "met_hr_2",
+      "patientId": "usr_pat_1",
+      "metricType": "heart_rate",
+      "value": 74,
+      "unit": "bpm",
+      "recordedAt": "2026-08-20T08:30:00Z"
+    },
+    {
+      "id": "met_hr_3",
+      "patientId": "usr_pat_1",
+      "metricType": "heart_rate",
+      "value": 70,
+      "unit": "bpm",
+      "recordedAt": "2026-09-15T08:30:00Z"
+    },
+    {
+      "id": "met_hr_4",
+      "patientId": "usr_pat_1",
+      "metricType": "heart_rate",
+      "value": 68,
+      "unit": "bpm",
+      "recordedAt": "2026-10-05T08:30:00Z"
+    },
+    {
+      "id": "met_hr_5",
+      "patientId": "usr_pat_1",
+      "metricType": "heart_rate",
+      "value": 66,
+      "unit": "bpm",
+      "recordedAt": "2026-10-22T08:30:00Z",
+      "notes": "Resting pulse"
+    },
+    {
+      "id": "met_bg_1",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_glucose",
+      "value": 94,
+      "unit": "mg/dL",
+      "recordedAt": "2026-08-11T07:30:00Z",
+      "notes": "Fasting 10 hours"
+    },
+    {
+      "id": "met_bg_2",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_glucose",
+      "value": 92,
+      "unit": "mg/dL",
+      "recordedAt": "2026-09-10T07:30:00Z",
+      "notes": "Fasting"
+    },
+    {
+      "id": "met_bg_3",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_glucose",
+      "value": 90,
+      "unit": "mg/dL",
+      "recordedAt": "2026-10-18T07:30:00Z",
+      "notes": "Fasting home glucometer check"
+    },
+    {
+      "id": "met_ox_1",
+      "patientId": "usr_pat_1",
+      "metricType": "oxygen_saturation",
+      "value": 99,
+      "unit": "%",
+      "recordedAt": "2026-10-22T08:35:00Z",
+      "notes": "Pulse oximeter reading"
+    },
+    {
+      "id": "met_tp_1",
+      "patientId": "usr_pat_1",
+      "metricType": "body_temperature",
+      "value": 98.4,
+      "unit": "°F",
+      "recordedAt": "2026-10-22T08:35:00Z"
+    }
+  ],
+  "healthGoals": [
+    {
+      "id": "goal_501",
+      "patientId": "usr_pat_1",
+      "goalType": "target_weight",
+      "goalName": "Target Healthy Weight",
+      "targetValue": 64,
+      "currentValue": 66.2,
+      "unit": "kg",
+      "startDate": "2026-07-01",
+      "targetDate": "2026-12-31",
+      "status": "in_progress"
+    },
+    {
+      "id": "goal_502",
+      "patientId": "usr_pat_1",
+      "goalType": "daily_steps",
+      "goalName": "Morning Park Walk & Steps",
+      "targetValue": 10000,
+      "currentValue": 8850,
+      "unit": "steps",
+      "startDate": "2026-09-01",
+      "targetDate": "2026-11-30",
+      "status": "in_progress"
+    },
+    {
+      "id": "goal_503",
+      "patientId": "usr_pat_1",
+      "goalType": "water_intake",
+      "goalName": "Optimal Daily Hydration (जल सेवन)",
+      "targetValue": 2800,
+      "currentValue": 2400,
+      "unit": "ml",
+      "startDate": "2026-08-01",
+      "targetDate": "2026-12-31",
+      "status": "in_progress"
+    },
+    {
+      "id": "goal_504",
+      "patientId": "usr_pat_1",
+      "goalType": "exercise",
+      "goalName": "Yoga & Pranayama (योग व प्राणायाम)",
+      "targetValue": 30,
+      "currentValue": 25,
+      "unit": "minutes",
+      "startDate": "2026-09-01",
+      "targetDate": "2026-11-30",
+      "status": "in_progress"
+    }
+  ],
+  "dailyWellness": [
+    {
+      "id": "well_601",
+      "patientId": "usr_pat_1",
+      "date": "2026-10-22",
+      "waterIntakeMl": 2400,
+      "sleepHours": 7.5,
+      "steps": 8850,
+      "exerciseMinutes": 30,
+      "calories": 1940,
+      "mood": "good",
+      "notes": "Morning brisk walk in Cubbon Park + 15 min Anulom Vilom Pranayama."
+    },
+    {
+      "id": "well_602",
+      "patientId": "usr_pat_1",
+      "date": "2026-10-21",
+      "waterIntakeMl": 2500,
+      "sleepHours": 8,
+      "steps": 9400,
+      "exerciseMinutes": 40,
+      "calories": 2020,
+      "mood": "great",
+      "notes": "Excellent energy. Avoided deep fried food and high-sodium snacks."
+    },
+    {
+      "id": "well_603",
+      "patientId": "usr_pat_1",
+      "date": "2026-10-20",
+      "waterIntakeMl": 2100,
+      "sleepHours": 7,
+      "steps": 7200,
+      "exerciseMinutes": 20,
+      "calories": 1890,
+      "mood": "neutral",
+      "notes": "Busy office meetings; completed evening walk after dinner."
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_1792935604477",
+      "userId": "usr_pat_1",
+      "type": "new_prescription",
+      "title": "New Digital Prescription Created",
+      "message": "Dr. Rajesh K. Sharma, MD, DM has issued a new prescription for: Seasonal allergic rhinitis (Automated Test)",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:40:04.477Z",
+      "link": "/prescriptions"
+    },
+    {
+      "id": "notif_1792935604469",
+      "userId": "usr_pat_1",
+      "type": "appointment_confirmation",
+      "title": "Appointment Request Submitted",
+      "message": "Your appointment with Dr. Rajesh K. Sharma, MD, DM on 2026-11-20 at 11:30 AM has been submitted for confirmation.",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:40:04.468Z",
+      "link": "/appointments"
+    },
+    {
+      "id": "notif_1792935604468",
+      "userId": "usr_doc_1",
+      "type": "appointment_confirmation",
+      "title": "New Appointment Booking Request",
+      "message": "Rohan Verma requested a video consultation on 2026-11-20 at 11:30 AM.",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:40:04.468Z",
+      "link": "/appointments"
+    },
+    {
+      "id": "notif_1792935604454",
+      "userId": "usr_pat_1",
+      "type": "medical_report_uploaded",
+      "title": "Medical Record Archived",
+      "message": "Your medical record \"Automated Test Blood Report\" was successfully uploaded and archived.",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:40:04.454Z",
+      "link": "/medical-records"
+    },
+    {
+      "id": "notif_1792935604439",
+      "userId": "usr_pat_1",
+      "type": "metric_alert",
+      "title": "[Test Alert] Automated Test Weight Threshold",
+      "message": "Test alert simulated for weight: Current measurement is 73 kg (Configured Threshold: 71.5 kg). Alert dispatched to active channels.",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:40:04.439Z"
+    },
+    {
+      "id": "notif_1792935456399",
+      "userId": "usr_pat_1",
+      "type": "new_prescription",
+      "title": "New Digital Prescription Created",
+      "message": "Dr. Rajesh K. Sharma, MD, DM has issued a new prescription for: Seasonal allergic rhinitis (Automated Test)",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:37:36.399Z",
+      "link": "/prescriptions"
+    },
+    {
+      "id": "notif_1792935456370",
+      "userId": "usr_pat_1",
+      "type": "medical_report_uploaded",
+      "title": "Medical Record Archived",
+      "message": "Your medical record \"Automated Test Blood Report\" was successfully uploaded and archived.",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:37:36.370Z",
+      "link": "/medical-records"
+    },
+    {
+      "id": "notif_1792935456354",
+      "userId": "usr_pat_1",
+      "type": "metric_alert",
+      "title": "[Test Alert] Automated Test Weight Threshold",
+      "message": "Test alert simulated for weight: Current measurement is 73 kg (Configured Threshold: 71.5 kg). Alert dispatched to active channels.",
+      "isRead": false,
+      "createdAt": "2026-10-25T13:37:36.355Z"
+    },
+    {
+      "id": "notif_701",
+      "userId": "usr_pat_1",
+      "type": "appointment_reminder",
+      "title": "Upcoming OPD Consultation",
+      "message": "Your Cardiology consultation with Dr. Rajesh K. Sharma at Apollo Heart Centre is scheduled for October 26, 2026 at 11:00 AM.",
+      "isRead": false,
+      "createdAt": "2026-10-23T08:00:00.000Z",
+      "link": "/appointments"
+    },
+    {
+      "id": "notif_702",
+      "userId": "usr_pat_1",
+      "type": "medication_reminder",
+      "title": "Dose Reminder: Telma 40",
+      "message": "Reminder: Take Telmisartan 40mg with water after morning breakfast.",
+      "isRead": false,
+      "createdAt": "2026-10-23T08:00:00.000Z",
+      "link": "/medications"
+    },
+    {
+      "id": "notif_703",
+      "userId": "usr_pat_1",
+      "type": "new_prescription",
+      "title": "ABDM Verified Digital Prescription",
+      "message": "Dr. Rajesh K. Sharma generated a verified digital prescription linked to your ABHA ID 91-4421-8890-1204.",
+      "isRead": true,
+      "createdAt": "2026-08-14T12:05:00.000Z",
+      "link": "/prescriptions"
+    },
+    {
+      "id": "notif_704",
+      "userId": "usr_doc_1",
+      "type": "appointment_confirmation",
+      "title": "Confirmed OPD Appointment",
+      "message": "Rohan Verma (ABHA: 91-4421-8890-1204) confirmed in-person Cardiology review for October 26, 2026 at 11:00 AM.",
+      "isRead": false,
+      "createdAt": "2026-10-18T10:00:00.000Z",
+      "link": "/doctor/appointments"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg_801",
+      "senderId": "usr_doc_1",
+      "senderName": "Dr. Rajesh K. Sharma, MD, DM",
+      "senderRole": "doctor",
+      "receiverId": "usr_pat_1",
+      "receiverName": "Rohan Verma",
+      "receiverRole": "patient",
+      "message": "Namaste Rohan, I reviewed your recent home blood pressure readings on the ArogyaPulse portal. The systolic readings stabilized nicely at 118–122 mmHg with Telma 40.",
+      "isRead": true,
+      "createdAt": "2026-10-18T16:20:00.000Z"
+    },
+    {
+      "id": "msg_802",
+      "senderId": "usr_pat_1",
+      "senderName": "Rohan Verma",
+      "senderRole": "patient",
+      "receiverId": "usr_doc_1",
+      "receiverName": "Dr. Rajesh K. Sharma, MD, DM",
+      "receiverRole": "doctor",
+      "message": "Thank you Dr. Sharma! Taking Telma 40 regularly with my morning walk and reducing salt in our meals has made a significant difference. Looking forward to our review on the 26th.",
+      "isRead": true,
+      "createdAt": "2026-10-18T16:45:00.000Z"
+    },
+    {
+      "id": "msg_803",
+      "senderId": "usr_doc_1",
+      "senderName": "Dr. Rajesh K. Sharma, MD, DM",
+      "senderRole": "doctor",
+      "receiverId": "usr_pat_1",
+      "receiverName": "Rohan Verma",
+      "receiverRole": "patient",
+      "message": "Very good! Please bring your recent Dr. Lal PathLabs report or keep your ABHA health record handy on the app during our clinic consultation.",
+      "isRead": false,
+      "createdAt": "2026-10-19T09:10:00.000Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud_1792935604477_352",
+      "timestamp": "2026-10-25T13:40:04.477Z",
+      "userId": "usr_doc_1",
+      "userName": "Dr. Rajesh K. Sharma, MD, DM",
+      "role": "doctor",
+      "action": "PRESCRIPTION_CREATED",
+      "entityType": "PRESCRIPTION",
+      "entityId": "rx_1792935604476",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935604472_585",
+      "timestamp": "2026-10-25T13:40:04.472Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "APPOINTMENT_CANCELLED",
+      "entityType": "APPOINTMENT",
+      "entityId": "apt_1792935604467",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935604468_589",
+      "timestamp": "2026-10-25T13:40:04.468Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "APPOINTMENT_BOOKED",
+      "entityType": "APPOINTMENT",
+      "entityId": "apt_1792935604467",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935604459_766",
+      "timestamp": "2026-10-25T13:40:04.459Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "MEDICAL_RECORD_DELETED",
+      "entityType": "MEDICAL_RECORD",
+      "entityId": "rec_1792935604454",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935604455_623",
+      "timestamp": "2026-10-25T13:40:04.455Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "MEDICAL_RECORD_UPLOADED",
+      "entityType": "MEDICAL_RECORD",
+      "entityId": "rec_1792935604454",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935604448_558",
+      "timestamp": "2026-10-25T13:40:04.448Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "HEALTH_METRIC_LOGGED",
+      "entityType": "METRIC",
+      "entityId": "met_1792935604448",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935600830_691",
+      "timestamp": "2026-10-25T13:40:00.830Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935600690_214",
+      "timestamp": "2026-10-25T13:40:00.690Z",
+      "userId": "usr_doc_1",
+      "userName": "Dr. Rajesh K. Sharma, MD, DM",
+      "role": "doctor",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_doc_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935600571_152",
+      "timestamp": "2026-10-25T13:40:00.571Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_pat_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935456400_951",
+      "timestamp": "2026-10-25T13:37:36.400Z",
+      "userId": "usr_doc_1",
+      "userName": "Dr. Rajesh K. Sharma, MD, DM",
+      "role": "doctor",
+      "action": "PRESCRIPTION_CREATED",
+      "entityType": "PRESCRIPTION",
+      "entityId": "rx_1792935456398",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935456374_220",
+      "timestamp": "2026-10-25T13:37:36.374Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "MEDICAL_RECORD_DELETED",
+      "entityType": "MEDICAL_RECORD",
+      "entityId": "rec_1792935456369",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935456370_458",
+      "timestamp": "2026-10-25T13:37:36.370Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "MEDICAL_RECORD_UPLOADED",
+      "entityType": "MEDICAL_RECORD",
+      "entityId": "rec_1792935456369",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935456363_252",
+      "timestamp": "2026-10-25T13:37:36.363Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "HEALTH_METRIC_LOGGED",
+      "entityType": "METRIC",
+      "entityId": "met_1792935456362",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935306842_62",
+      "timestamp": "2026-10-25T13:35:06.842Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935306693_435",
+      "timestamp": "2026-10-25T13:35:06.693Z",
+      "userId": "usr_doc_1",
+      "userName": "Dr. Rajesh K. Sharma, MD, DM",
+      "role": "doctor",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_doc_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792935306568_361",
+      "timestamp": "2026-10-25T13:35:06.568Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_pat_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_901",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan",
+      "role": "admin",
+      "action": "SYSTEM_INITIALIZATION",
+      "entityType": "AROGYAPULSE_CORE",
+      "entityId": "ABDM_NODE_01",
+      "timestamp": "2026-10-23T02:00:00.000Z",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_902",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "HEALTH_METRIC_RECORDED",
+      "entityType": "HEALTH_METRIC",
+      "entityId": "met_bp_5",
+      "timestamp": "2026-10-22T08:30:00.000Z",
+      "ipAddress": "103.21.124.55"
+    },
+    {
+      "id": "aud_903",
+      "userId": "usr_doc_1",
+      "userName": "Dr. Rajesh K. Sharma, MD, DM",
+      "role": "doctor",
+      "action": "PRESCRIPTION_GENERATED",
+      "entityType": "PRESCRIPTION",
+      "entityId": "rx_301",
+      "timestamp": "2026-08-14T12:00:00.000Z",
+      "ipAddress": "103.55.80.12"
+    }
+  ],
+  "metricThresholds": [
+    {
+      "id": "th_bmi_1",
+      "patientId": "usr_pat_1",
+      "metricType": "bmi",
+      "title": "BMI Overweight Caution Alert",
+      "condition": "greater_than",
+      "thresholdValue": 25,
+      "unit": "kg/m²",
+      "severity": "advisory",
+      "enabled": true,
+      "notifyChannels": {
+        "inApp": true,
+        "soundChime": true,
+        "smsAlert": false,
+        "emailAlert": true
+      },
+      "customMessage": "BMI exceeded healthy threshold (24.9). Review dietary portion sizes & increase daily walk.",
+      "lastTriggeredAt": "2026-10-20T08:00:00.000Z"
+    },
+    {
+      "id": "th_weight_1",
+      "patientId": "usr_pat_1",
+      "metricType": "weight",
+      "title": "Body Weight Maintenance Upper Bound",
+      "condition": "greater_than",
+      "thresholdValue": 70,
+      "unit": "kg",
+      "severity": "advisory",
+      "enabled": true,
+      "notifyChannels": {
+        "inApp": true,
+        "soundChime": true,
+        "smsAlert": true,
+        "emailAlert": false
+      },
+      "customMessage": "Body weight exceeded the 70.0 kg target maintenance ceiling.",
+      "lastTriggeredAt": "2026-07-01T08:00:00.000Z"
+    },
+    {
+      "id": "th_bp_1",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_pressure",
+      "title": "Systolic Blood Pressure Elevated Threshold",
+      "condition": "greater_than",
+      "thresholdValue": 135,
+      "unit": "mmHg",
+      "severity": "critical",
+      "enabled": true,
+      "notifyChannels": {
+        "inApp": true,
+        "soundChime": true,
+        "smsAlert": true,
+        "emailAlert": true
+      },
+      "customMessage": "Systolic blood pressure above 135 mmHg. Rest calmly for 10 minutes, drink water, and re-check.",
+      "lastTriggeredAt": "2026-08-14T10:00:00.000Z"
+    },
+    {
+      "id": "th_sugar_1",
+      "patientId": "usr_pat_1",
+      "metricType": "blood_glucose",
+      "title": "Fasting Blood Sugar Alert Threshold",
+      "condition": "greater_than",
+      "thresholdValue": 125,
+      "unit": "mg/dL",
+      "severity": "critical",
+      "enabled": true,
+      "notifyChannels": {
+        "inApp": true,
+        "soundChime": false,
+        "smsAlert": false,
+        "emailAlert": true
+      },
+      "customMessage": "Fasting glucose level exceeded 125 mg/dL. Monitor carbohydrate intake and log symptoms."
+    },
+    {
+      "id": "th_spo2_1",
+      "patientId": "usr_pat_1",
+      "metricType": "oxygen_saturation",
+      "title": "Low Oxygen Saturation Alert (SpO2)",
+      "condition": "less_than",
+      "thresholdValue": 95,
+      "unit": "%",
+      "severity": "critical",
+      "enabled": true,
+      "notifyChannels": {
+        "inApp": true,
+        "soundChime": true,
+        "smsAlert": true,
+        "emailAlert": true
+      },
+      "customMessage": "SpO2 level below 95%. Ensure warm fingertips, reposition sensor, or contact healthcare helpline 108/112 if breathless."
+    }
+  ]
+}

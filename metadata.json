@@ -1,0 +1,6 @@
+{
+  "name": "ArogyaPulse - Indian Health & Clinic Management System",
+  "description": "Production-grade Indian healthcare management platform (ABHA-ready) with role-based access for patients, doctors, and hospital administrators, featuring appointment booking in INR (₹), digital prescriptions, medical records, and health analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
