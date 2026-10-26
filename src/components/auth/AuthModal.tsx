@@ -108,7 +108,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <Sparkles className="w-3.5 h-3.5 text-teal-600" />
             <span>Instant Demo Logins (Click to Enter):</span>
           </div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <button
               type="button"
               onClick={() => handleQuickDemo('rohan@arogyapulse.in')}
@@ -119,19 +119,27 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </button>
             <button
               type="button"
+              onClick={() => handleQuickDemo('darsh.jain@arogyapulse.in')}
+              className="px-2 py-1.5 text-[11px] font-medium bg-teal-100/70 hover:bg-teal-200 text-teal-900 rounded-lg border border-teal-300 shadow-2xs transition-colors truncate font-semibold"
+              title="Darsh Jain (Patient from screenshot)"
+            >
+              Darsh Jain (Patient)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickDemo('dr.rohan@arogyapulse.in')}
+              className="px-2 py-1.5 text-[11px] font-medium bg-white hover:bg-teal-100 text-teal-800 rounded-lg border border-teal-200 shadow-2xs transition-colors truncate"
+              title="Dr. Rohan Verma (Orthopedics)"
+            >
+              Dr. Rohan (Ortho)
+            </button>
+            <button
+              type="button"
               onClick={() => handleQuickDemo('dr.rajesh@arogyapulse.in')}
               className="px-2 py-1.5 text-[11px] font-medium bg-white hover:bg-teal-100 text-teal-800 rounded-lg border border-teal-200 shadow-2xs transition-colors truncate"
               title="Dr. Rajesh Sharma (Cardiologist)"
             >
               Dr. Rajesh (Doc)
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickDemo('admin@arogyapulse.in')}
-              className="px-2 py-1.5 text-[11px] font-medium bg-white hover:bg-teal-100 text-teal-800 rounded-lg border border-teal-200 shadow-2xs transition-colors truncate"
-              title="Dr. Swaminathan (Hospital Admin)"
-            >
-              Admin
             </button>
           </div>
         </div>

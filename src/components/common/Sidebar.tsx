@@ -60,10 +60,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isOpe
 
   const adminNav = [
     { id: 'dashboard', label: 'Overview & Stats', icon: LayoutDashboard },
-    { id: 'users', label: 'User Directory', icon: Users },
-    { id: 'doctors', label: 'Doctor Verification', icon: ShieldCheck },
+    { id: 'admin-panel', label: 'Master Admin Panel', icon: Sparkles },
     { id: 'appointments', label: 'All Appointments', icon: Calendar },
-    { id: 'analytics', label: 'System Analytics', icon: LineChart },
+    { id: 'records', label: 'All Medical Records', icon: FileText },
+    { id: 'prescriptions', label: 'All Prescriptions', icon: FileCheck2 },
+    { id: 'patients-control', label: 'Patient Descriptions', icon: Users },
+    { id: 'users', label: 'User Directory', icon: UserCheck },
+    { id: 'doctors', label: 'Doctor Verification', icon: ShieldCheck },
     { id: 'audit', label: 'Security Audit Logs', icon: History }
   ];
 

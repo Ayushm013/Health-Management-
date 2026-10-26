@@ -333,6 +333,101 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenAuth, onEnterDas
         </div>
       </section>
 
+      {/* Medical Departments */}
+      <section id="departments" className="py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto text-center space-y-3 mb-16">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-teal-700">
+              Clinical Specializations
+            </h2>
+            <p className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Hospital Medical Departments
+            </p>
+            <p className="text-sm text-slate-600">
+              Access credentialed specialists across multidisciplinary outpatient departments (OPD).
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                dept: 'Orthopedics',
+                desc: 'Joint replacement, fracture trauma, musculoskeletal rehabilitation & sports medicine.',
+                doctors: 'Dr. Rohan Verma / Senior Ortho Faculty',
+                badge: 'Trauma & Bone OPD'
+              },
+              {
+                dept: 'Cardiology',
+                desc: 'Preventive cardiology, hypertensive heart disease, coronary care & heart failure management.',
+                doctors: 'Dr. Rajesh K. Sharma, MD, DM',
+                badge: 'Cardiac OPD'
+              },
+              {
+                dept: 'Neurology',
+                desc: 'Headache clinic, stroke rehabilitation, epilepsy management & peripheral nerve care.',
+                doctors: 'Dr. Ananya Iyer, MD, DM',
+                badge: 'Neuro Clinic'
+              },
+              {
+                dept: 'Endocrinology & Diabetology',
+                desc: 'Type-2 diabetes reversal programs, thyroid disorders & metabolic wellness.',
+                doctors: 'Dr. Vikramaditya Sen, MD, DM',
+                badge: 'Metabolic Care'
+              },
+              {
+                dept: 'General Medicine',
+                desc: 'Comprehensive adult health evaluations, fever clinic & multi-system infection management.',
+                doctors: 'Consultant Physicians',
+                badge: 'Primary OPD'
+              },
+              {
+                dept: 'Pediatrics & Neonatology',
+                desc: 'Infant growth tracking, universal immunization schedules & childhood wellness.',
+                doctors: 'Pediatric Care Team',
+                badge: 'Child Health'
+              }
+            ].map((d) => (
+              <div
+                key={d.dept}
+                className="bg-slate-50/70 hover:bg-white rounded-2xl border border-slate-200 p-6 transition-all hover:shadow-md flex flex-col justify-between group"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                      {d.badge}
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                    {d.dept}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {d.desc}
+                  </p>
+                  <p className="text-[11px] font-medium text-slate-500">
+                    Lead: <span className="font-semibold text-slate-700">{d.doctors}</span>
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!user) {
+                      onOpenAuth('login');
+                    } else {
+                      onEnterDashboard('appointments');
+                    }
+                  }}
+                  className="mt-5 w-full py-2 text-xs font-semibold text-center text-teal-700 bg-white hover:bg-teal-50 rounded-xl border border-teal-200 transition-colors cursor-pointer"
+                >
+                  Book in {d.dept} →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Doctors Showcase */}
       <section id="doctors" className="py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -434,9 +529,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenAuth, onEnterDas
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="about" className="bg-slate-900 text-slate-400 text-xs py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      {/* Footer / About & Contact */}
+      <footer id="contact" className="bg-slate-900 text-slate-400 text-xs py-12">
+        <div id="about" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-3">
               <div className="flex items-center gap-2">

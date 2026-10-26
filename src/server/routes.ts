@@ -514,7 +514,22 @@ apiRouter.put('/appointments/:id', authenticateToken, (req: AuthenticatedRequest
     return;
   }
 
-  const { status, consultationNotes, notes, appointmentDate, appointmentTime } = req.body;
+  const {
+    status,
+    consultationNotes,
+    notes,
+    appointmentDate,
+    appointmentTime,
+    reason,
+    type,
+    doctorId,
+    doctorName,
+    doctorSpecialization,
+    doctorClinic,
+    doctorFee,
+    patientName,
+    patientPhone
+  } = req.body;
 
   const updates: Partial<Appointment> = {};
   if (status) updates.status = status;
@@ -522,6 +537,15 @@ apiRouter.put('/appointments/:id', authenticateToken, (req: AuthenticatedRequest
   if (notes !== undefined) updates.notes = notes;
   if (appointmentDate) updates.appointmentDate = appointmentDate;
   if (appointmentTime) updates.appointmentTime = appointmentTime;
+  if (reason !== undefined) updates.reason = reason;
+  if (type) updates.type = type;
+  if (doctorId) updates.doctorId = doctorId;
+  if (doctorName) updates.doctorName = doctorName;
+  if (doctorSpecialization) updates.doctorSpecialization = doctorSpecialization;
+  if (doctorClinic !== undefined) updates.doctorClinic = doctorClinic;
+  if (doctorFee !== undefined) updates.doctorFee = Number(doctorFee);
+  if (patientName) updates.patientName = patientName;
+  if (patientPhone !== undefined) updates.patientPhone = patientPhone;
 
   const updatedApt = db.updateAppointment(aptId, updates);
 
@@ -558,6 +582,23 @@ apiRouter.delete('/appointments/:id', authenticateToken, (req: AuthenticatedRequ
 
   if (!appointment) {
     res.status(404).json({ error: 'Appointment not found.' });
+    return;
+  }
+
+  const isHardDelete = req.query.hard === 'true' || (req.user!.role === 'admin' && req.query.action === 'delete');
+
+  if (isHardDelete) {
+    db.deleteAppointment(aptId);
+    db.logAudit({
+      userId: req.user!.id,
+      userName: req.user!.name,
+      role: req.user!.role,
+      action: 'APPOINTMENT_DELETED_PERMANENTLY',
+      entityType: 'APPOINTMENT',
+      entityId: aptId,
+      ipAddress: req.ip || '127.0.0.1'
+    });
+    res.json({ message: 'Appointment record permanently removed.' });
     return;
   }
 
@@ -651,6 +692,41 @@ apiRouter.post('/medical-records', authenticateToken, (req: AuthenticatedRequest
   } catch (err: any) {
     res.status(500).json({ error: 'Unable to upload the document. Please check the file format and size.' });
   }
+});
+
+apiRouter.put('/medical-records/:id', authenticateToken, (req: AuthenticatedRequest, res) => {
+  const recordId = req.params.id;
+  const existing = db.getMedicalRecordById(recordId);
+
+  if (!existing) {
+    res.status(404).json({ error: 'Medical record not found.' });
+    return;
+  }
+
+  const { title, type, description, recordDate, hospital, fileName, fileSize, fileUrl } = req.body;
+  const updates: Partial<MedicalRecord> = {};
+  if (title) updates.title = title;
+  if (type) updates.type = type;
+  if (description !== undefined) updates.description = description;
+  if (recordDate) updates.recordDate = recordDate;
+  if (hospital !== undefined) updates.hospital = hospital;
+  if (fileName) updates.fileName = fileName;
+  if (fileSize) updates.fileSize = fileSize;
+  if (fileUrl) updates.fileUrl = fileUrl;
+
+  const updated = db.updateMedicalRecord(recordId, updates);
+
+  db.logAudit({
+    userId: req.user!.id,
+    userName: req.user!.name,
+    role: req.user!.role,
+    action: 'MEDICAL_RECORD_UPDATED',
+    entityType: 'MEDICAL_RECORD',
+    entityId: recordId,
+    ipAddress: req.ip || '127.0.0.1'
+  });
+
+  res.json({ message: 'Medical record updated successfully.', record: updated });
 });
 
 apiRouter.delete('/medical-records/:id', authenticateToken, (req: AuthenticatedRequest, res) => {
@@ -800,6 +876,66 @@ apiRouter.post('/prescriptions', authenticateToken, requireRole('doctor'), (req:
   } catch (err: any) {
     res.status(500).json({ error: err.message || 'Unable to create prescription.' });
   }
+});
+
+apiRouter.put('/prescriptions/:id', authenticateToken, (req: AuthenticatedRequest, res) => {
+  const rxId = req.params.id;
+  const existing = db.getPrescriptionById(rxId);
+
+  if (!existing) {
+    res.status(404).json({ error: 'Prescription not found.' });
+    return;
+  }
+
+  const { diagnosis, notes, items, patientName, doctorName, prescriptionDate } = req.body;
+  const updates: Partial<Prescription> = {};
+  if (diagnosis !== undefined) updates.diagnosis = diagnosis;
+  if (notes !== undefined) updates.notes = notes;
+  if (patientName) updates.patientName = patientName;
+  if (doctorName) updates.doctorName = doctorName;
+  if (prescriptionDate) updates.prescriptionDate = prescriptionDate;
+
+  if (Array.isArray(items)) {
+    updates.items = items.map((it: any, idx: number) => ({
+      id: it.id || `rx_item_${Date.now()}_${idx}`,
+      medicineName: it.medicineName,
+      dosage: it.dosage,
+      frequency: it.frequency,
+      duration: it.duration,
+      instructions: it.instructions || 'After food'
+    }));
+  }
+
+  const updated = db.updatePrescription(rxId, updates);
+
+  db.logAudit({
+    userId: req.user!.id,
+    userName: req.user!.name,
+    role: req.user!.role,
+    action: 'PRESCRIPTION_UPDATED',
+    entityType: 'PRESCRIPTION',
+    entityId: rxId,
+    ipAddress: req.ip || '127.0.0.1'
+  });
+
+  res.json({ message: 'Prescription updated successfully.', prescription: updated });
+});
+
+apiRouter.delete('/prescriptions/:id', authenticateToken, (req: AuthenticatedRequest, res) => {
+  const rxId = req.params.id;
+  db.deletePrescription(rxId);
+
+  db.logAudit({
+    userId: req.user!.id,
+    userName: req.user!.name,
+    role: req.user!.role,
+    action: 'PRESCRIPTION_DELETED',
+    entityType: 'PRESCRIPTION',
+    entityId: rxId,
+    ipAddress: req.ip || '127.0.0.1'
+  });
+
+  res.json({ message: 'Prescription removed successfully.' });
 });
 
 // ==========================================
@@ -1433,6 +1569,109 @@ apiRouter.get('/admin/audit-logs', authenticateToken, requireRole('admin'), (req
   res.json({ logs: db.getAuditLogs() });
 });
 
+apiRouter.get('/admin/all-data', authenticateToken, requireRole('admin'), (req, res) => {
+  const appointments = db.getAppointments();
+  const medicalRecords = db.getMedicalRecords();
+  const prescriptions = db.getPrescriptions();
+  const users = db.getUsers();
+
+  const patients = users.filter(u => u.role === 'patient').map(u => {
+    const profile = db.getPatientProfileByUserId(u.id);
+    const userApts = appointments.filter(a => a.patientId === u.id);
+    const userRecords = medicalRecords.filter(r => r.patientId === u.id);
+    const userRx = prescriptions.filter(p => p.patientId === u.id);
+    const { passwordHash: _, ...safeUser } = u;
+    return {
+      ...safeUser,
+      profile,
+      appointmentCount: userApts.length,
+      recordsCount: userRecords.length,
+      prescriptionCount: userRx.length
+    };
+  });
+
+  const doctors = users.filter(u => u.role === 'doctor').map(u => {
+    const profile = db.getDoctorProfileByUserId(u.id);
+    const docApts = appointments.filter(a => a.doctorId === u.id);
+    const { passwordHash: _, ...safeUser } = u;
+    return {
+      ...safeUser,
+      profile,
+      appointmentCount: docApts.length
+    };
+  });
+
+  res.json({
+    appointments,
+    medicalRecords,
+    prescriptions,
+    patients,
+    doctors
+  });
+});
+
+apiRouter.put('/admin/patients/:id/profile', authenticateToken, requireRole('admin'), (req: AuthenticatedRequest, res) => {
+  const patientId = req.params.id;
+  const user = db.getUserById(patientId);
+  if (!user) {
+    res.status(404).json({ error: 'Patient not found.' });
+    return;
+  }
+
+  const {
+    name,
+    phone,
+    email,
+    status,
+    abhaId,
+    abhaAddress,
+    dateOfBirth,
+    gender,
+    bloodGroup,
+    address,
+    emergencyContact,
+    allergies,
+    chronicConditions,
+    medicalHistory
+  } = req.body;
+
+  if (name || phone || email || status) {
+    db.updateUser(patientId, { name, phone, email, status });
+  }
+
+  const updatedProfile = db.createOrUpdatePatientProfile(patientId, {
+    abhaId,
+    abhaAddress,
+    dateOfBirth,
+    gender,
+    bloodGroup,
+    address,
+    emergencyContact,
+    allergies: Array.isArray(allergies) ? allergies : (allergies ? [allergies] : []),
+    chronicConditions: Array.isArray(chronicConditions) ? chronicConditions : (chronicConditions ? [chronicConditions] : []),
+    medicalHistory: Array.isArray(medicalHistory) ? medicalHistory : (medicalHistory ? [medicalHistory] : [])
+  });
+
+  db.logAudit({
+    userId: req.user!.id,
+    userName: req.user!.name,
+    role: 'admin',
+    action: 'ADMIN_PATIENT_PROFILE_UPDATED',
+    entityType: 'PATIENT_PROFILE',
+    entityId: patientId,
+    ipAddress: req.ip || '127.0.0.1'
+  });
+
+  const safe = db.getUserById(patientId);
+  const { passwordHash: _, ...safeUser } = (safe || {}) as any;
+
+  res.json({
+    message: 'Patient profile and medical description updated successfully.',
+    user: safeUser,
+    profile: updatedProfile
+  });
+});
+
 // ==========================================
 // 14. AI-POWERED HEALTH SUMMARY (GEMINI API)
 // ==========================================
@@ -1662,4 +1901,78 @@ Respond with a JSON object adhering to the specified schema.`;
 
 apiRouter.post('/ai/health-summary', authenticateToken, handleAiHealthSummary);
 apiRouter.get('/ai/health-summary', authenticateToken, handleAiHealthSummary);
+
+// ==========================================
+// 12. SUPABASE INTEGRATION STATUS, STATS & SYNC
+// ==========================================
+import {
+  checkServerSupabaseStatus,
+  getSupabaseSyncStats,
+  getSupabaseSqlSchema,
+  syncAllDatabaseToSupabase
+} from './supabase.js';
+
+apiRouter.get('/supabase/status', async (req, res) => {
+  try {
+    const status = await checkServerSupabaseStatus();
+    res.json(status);
+  } catch (err: any) {
+    res.status(500).json({
+      connected: false,
+      projectId: process.env.SUPABASE_PROJECT_ID || 'kfrvlmtbayncwlmzkdii',
+      projectUrl: process.env.SUPABASE_URL || 'https://kfrvlmtbayncwlmzkdii.supabase.co',
+      error: err.message || 'Error checking Supabase status'
+    });
+  }
+});
+
+apiRouter.post('/supabase/ping', async (req, res) => {
+  try {
+    const status = await checkServerSupabaseStatus();
+    res.json({
+      success: true,
+      data: status
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      error: err.message || 'Supabase ping failed'
+    });
+  }
+});
+
+apiRouter.get('/supabase/stats', (req, res) => {
+  try {
+    const stats = getSupabaseSyncStats();
+    res.json(stats);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || 'Failed to fetch sync statistics' });
+  }
+});
+
+apiRouter.get('/supabase/schema', (req, res) => {
+  try {
+    const schema = getSupabaseSqlSchema();
+    res.type('text/plain').send(schema);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || 'Failed to retrieve schema' });
+  }
+});
+
+apiRouter.post('/supabase/sync-all', async (req, res) => {
+  try {
+    const allData = db.getAllData();
+    const result = await syncAllDatabaseToSupabase(allData);
+    res.json({
+      success: true,
+      message: `Successfully synchronized ${result.totalSynced} records to Supabase.`,
+      ...result
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      error: err.message || 'Batch sync failed'
+    });
+  }
+});
 

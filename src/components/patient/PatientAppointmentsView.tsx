@@ -11,10 +11,12 @@ import {
   FileCheck2,
   XCircle,
   CheckCircle2,
-  CalendarDays
+  CalendarDays,
+  FileText
 } from 'lucide-react';
 import { api } from '../../services/api.js';
 import { Appointment } from '../../types/index.js';
+import { VisitVoucherModal } from '../appointments/VisitVoucherModal.js';
 
 interface PatientAppointmentsViewProps {
   onOpenBooking: () => void;
@@ -28,6 +30,7 @@ export const PatientAppointmentsView: React.FC<PatientAppointmentsViewProps> = (
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [selectedApt, setSelectedApt] = useState<Appointment | null>(null);
+  const [voucherAppointment, setVoucherAppointment] = useState<Appointment | null>(null);
 
   const loadAppointments = async () => {
     try {
@@ -207,11 +210,21 @@ export const PatientAppointmentsView: React.FC<PatientAppointmentsViewProps> = (
               </div>
 
               {/* Action buttons */}
-              <div className="flex items-center gap-2 shrink-0 md:self-center">
+              <div className="flex flex-wrap items-center gap-2 shrink-0 md:self-center">
+                <button
+                  type="button"
+                  onClick={() => setVoucherAppointment(apt)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg shadow-2xs transition-colors cursor-pointer"
+                  title="View Official Visit Voucher Summary"
+                >
+                  <FileText className="w-3.5 h-3.5 text-teal-700" />
+                  <span>Visit Voucher</span>
+                </button>
+
                 {apt.status !== 'cancelled' && apt.status !== 'completed' && (
                   <button
                     onClick={() => handleCancelAppointment(apt.id)}
-                    className="px-3 py-1.5 text-xs font-medium text-rose-600 hover:bg-rose-50 border border-rose-200 rounded-lg transition-colors"
+                    className="px-3 py-1.5 text-xs font-medium text-rose-600 hover:bg-rose-50 border border-rose-200 rounded-lg transition-colors cursor-pointer"
                   >
                     Cancel Slot
                   </button>
@@ -219,7 +232,7 @@ export const PatientAppointmentsView: React.FC<PatientAppointmentsViewProps> = (
                 {apt.type === 'video' && apt.status === 'confirmed' && (
                   <button
                     onClick={() => alert(`Connecting to secure teleconsultation room with ${apt.doctorName}...`)}
-                    className="px-3.5 py-1.5 text-xs font-semibold text-white bg-sky-600 hover:bg-sky-700 rounded-lg shadow-2xs transition-colors flex items-center gap-1.5"
+                    className="px-3.5 py-1.5 text-xs font-semibold text-white bg-sky-600 hover:bg-sky-700 rounded-lg shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer"
                   >
                     <Video className="w-3.5 h-3.5" />
                     <span>Join Video</span>
@@ -230,6 +243,14 @@ export const PatientAppointmentsView: React.FC<PatientAppointmentsViewProps> = (
           ))}
         </div>
       )}
+
+      {/* Visit Voucher Modal */}
+      <VisitVoucherModal
+        isOpen={!!voucherAppointment}
+        onClose={() => setVoucherAppointment(null)}
+        appointment={voucherAppointment}
+        isNewBooking={false}
+      />
     </div>
   );
 };

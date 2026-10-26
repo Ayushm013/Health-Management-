@@ -56,18 +56,30 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Zone 2: Navigation Links (single line, no wrapping) */}
         {!isDashboard ? (
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
             <a
-              href="#features"
+              href="/"
+              onClick={(e) => {
+                if (setActiveTab) {
+                  e.preventDefault();
+                  setActiveTab('landing');
+                }
+              }}
               className="hover:text-teal-700 transition-colors whitespace-nowrap shrink-0"
             >
-              Features
+              Home
             </a>
             <a
-              href="#how-it-works"
+              href="#about"
               className="hover:text-teal-700 transition-colors whitespace-nowrap shrink-0"
             >
-              How It Works
+              About
+            </a>
+            <a
+              href="#departments"
+              className="hover:text-teal-700 transition-colors whitespace-nowrap shrink-0"
+            >
+              Departments
             </a>
             <a
               href="#doctors"
@@ -76,16 +88,29 @@ export const Header: React.FC<HeaderProps> = ({
               Doctors
             </a>
             <a
-              href="#statistics"
+              href="#features"
               className="hover:text-teal-700 transition-colors whitespace-nowrap shrink-0"
             >
-              Platform Metrics
+              Services
             </a>
+            <button
+              type="button"
+              onClick={() => {
+                if (user && setActiveTab) {
+                  setActiveTab('appointments');
+                } else if (onOpenAuth) {
+                  onOpenAuth('login');
+                }
+              }}
+              className="text-teal-700 font-semibold hover:text-teal-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            >
+              Appointments
+            </button>
             <a
-              href="#about"
+              href="#contact"
               className="hover:text-teal-700 transition-colors whitespace-nowrap shrink-0"
             >
-              About
+              Contact
             </a>
           </nav>
         ) : (
@@ -111,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({
         )}
 
         {/* Zone 3: Primary Action / User Profile */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0">
           {/* Quick Demo Role Switcher */}
           <div className="relative">
             <button
@@ -254,6 +279,7 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </div>
       </div>
+
     </header>
   );
 };

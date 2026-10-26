@@ -32,6 +32,7 @@ import {
 import { api } from '../../services/api.js';
 import { HealthMetric, MetricType, MetricThresholdAlert } from '../../types/index.js';
 import { MetricThresholdAlertsConfig } from './MetricThresholdAlertsConfig.js';
+import { syncHealthMetricToSupabase } from '../../services/supabase.js';
 
 export const HealthMetricsView: React.FC = () => {
   const [metrics, setMetrics] = useState<HealthMetric[]>([]);
@@ -99,7 +100,10 @@ export const HealthMetricsView: React.FC = () => {
         payload.unit = unit;
       }
 
-      await api.addHealthMetric(payload);
+      const res = await api.addHealthMetric(payload);
+      if (res && res.metric) {
+        syncHealthMetricToSupabase(res.metric).catch(() => {});
+      }
       setIsAddOpen(false);
       setValue('');
       setNotes('');

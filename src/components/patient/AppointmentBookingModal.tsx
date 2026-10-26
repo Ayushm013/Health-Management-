@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { X, Calendar, Clock, Stethoscope, Video, MapPin, AlertCircle, CheckCircle } from 'lucide-react';
 import { api } from '../../services/api.js';
-import { User, DoctorProfile } from '../../types/index.js';
+import { User, DoctorProfile, Appointment } from '../../types/index.js';
+import { VisitVoucherModal } from '../appointments/VisitVoucherModal.js';
 
 interface AppointmentBookingModalProps {
   isOpen: boolean;
@@ -25,12 +26,15 @@ export const AppointmentBookingModal: React.FC<AppointmentBookingModalProps> = (
   const [notes, setNotes] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [bookedAppointment, setBookedAppointment] = useState<Appointment | null>(null);
 
   // Set default minimum date to today
   const todayStr = new Date().toISOString().split('T')[0];
 
   useEffect(() => {
     if (isOpen) {
+      setBookedAppointment(null);
+      setError(null);
       api.getDoctors().then(res => {
         setDoctors(res.doctors || []);
         if (!selectedDoctorId && res.doctors.length > 0) {
@@ -78,7 +82,7 @@ export const AppointmentBookingModal: React.FC<AppointmentBookingModalProps> = (
 
     setLoading(true);
     try {
-      await api.bookAppointment({
+      const res = await api.bookAppointment({
         doctorId: selectedDoctorId,
         appointmentDate,
         appointmentTime,
@@ -86,14 +90,35 @@ export const AppointmentBookingModal: React.FC<AppointmentBookingModalProps> = (
         reason: reason.trim(),
         notes: notes.trim()
       });
+      // Store booked appointment to show the confirmation visit voucher view
+      setBookedAppointment(res.appointment);
       onSuccess();
-      onClose();
     } catch (err: any) {
       setError(err.message || 'Unable to book consultation slot. Please choose another time or physician.');
     } finally {
       setLoading(false);
     }
   };
+
+  // If appointment was just booked, render the confirmation visit voucher
+  if (bookedAppointment) {
+    return (
+      <VisitVoucherModal
+        isOpen={true}
+        appointment={bookedAppointment}
+        isNewBooking={true}
+        onClose={() => {
+          setBookedAppointment(null);
+          onClose();
+        }}
+        onViewAllAppointments={() => {
+          setBookedAppointment(null);
+          onClose();
+          onSuccess();
+        }}
+      />
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">

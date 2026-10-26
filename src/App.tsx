@@ -31,6 +31,7 @@ import { AdminDashboard } from './components/admin/AdminDashboard.js';
 import { AdminUsersView } from './components/admin/AdminUsersView.js';
 import { AdminDoctorsView } from './components/admin/AdminDoctorsView.js';
 import { AdminAuditLogsView } from './components/admin/AdminAuditLogsView.js';
+import { AdminRecordsAndAppointmentsPanel } from './components/admin/AdminRecordsAndAppointmentsPanel.js';
 
 // Common Views
 import { MessagingView } from './components/common/MessagingView.js';
@@ -195,12 +196,20 @@ function MainApp() {
         case 'dashboard':
         case 'analytics':
           return <AdminDashboard onNavigate={(tab) => setActiveTab(tab)} />;
+        case 'admin-panel':
+          return <AdminRecordsAndAppointmentsPanel initialTab="appointments" />;
+        case 'appointments':
+          return <AdminRecordsAndAppointmentsPanel initialTab="appointments" />;
+        case 'records':
+          return <AdminRecordsAndAppointmentsPanel initialTab="records" />;
+        case 'prescriptions':
+          return <AdminRecordsAndAppointmentsPanel initialTab="prescriptions" />;
+        case 'patients-control':
+          return <AdminRecordsAndAppointmentsPanel initialTab="patients" />;
         case 'users':
           return <AdminUsersView />;
         case 'doctors':
           return <AdminDoctorsView />;
-        case 'appointments':
-          return <DoctorAppointmentsView onOpenCreateRx={handleOpenCreateRx} />;
         case 'audit':
           return <AdminAuditLogsView />;
         default:

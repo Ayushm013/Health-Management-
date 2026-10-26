@@ -71,6 +71,41 @@
       "profileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
       "createdAt": "2026-02-15T16:00:00.000Z",
       "updatedAt": "2026-02-15T16:00:00.000Z"
+    },
+    {
+      "id": "usr_pat_1792942524687",
+      "name": "AYUSH",
+      "email": "ayush01@gmail.com",
+      "phone": "00000000000",
+      "role": "patient",
+      "status": "active",
+      "passwordHash": "$2b$10$QR3Aa43Z18iRuuCttxeSjOqhM6OGLE00ykJMSp7Xwz8HG5UJ9Fwy6",
+      "createdAt": "2026-10-25T15:35:24.687Z",
+      "updatedAt": "2026-10-25T15:35:24.687Z"
+    },
+    {
+      "id": "usr_doc_4",
+      "name": "Dr. Rohan Verma, MS (Orthopedics)",
+      "email": "dr.rohan@arogyapulse.in",
+      "passwordHash": "$2b$10$JRZ97ZW2rHgTE7ocK9HnIuxzf936OBEVl0hKcmibw3aMG2cuLAmiy",
+      "phone": "+91 98455 21098",
+      "role": "doctor",
+      "status": "active",
+      "profileImage": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80",
+      "createdAt": "2026-02-05T09:00:00.000Z",
+      "updatedAt": "2026-02-05T09:00:00.000Z"
+    },
+    {
+      "id": "usr_pat_3",
+      "name": "Darsh Jain",
+      "email": "darsh.jain@arogyapulse.in",
+      "passwordHash": "$2b$10$8M6O.sIsWy7.tlBPmTmnH.ES/iVLTmswoyRowYYg9ROzHikCElqLe",
+      "phone": "+91 98200 71093",
+      "role": "patient",
+      "status": "active",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "createdAt": "2026-02-18T10:00:00.000Z",
+      "updatedAt": "2026-02-18T10:00:00.000Z"
     }
   ],
   "doctorProfiles": [
@@ -164,34 +199,58 @@
         "Hindi",
         "Bengali"
       ]
+    },
+    {
+      "id": "doc_prof_4",
+      "userId": "usr_doc_4",
+      "specialization": "Orthopedics",
+      "qualification": "MBBS, MS (Orthopedics, AIIMS Delhi), MCh (Joint & Spine)",
+      "experience": 15,
+      "licenseNumber": "KMC-71093 (Karnataka Medical Council)",
+      "clinic": "Apollo Ortho & Trauma Care, Bengaluru",
+      "consultationFee": 1000,
+      "bio": "Senior Orthopedic Surgeon specializing in joint arthroplasty, sports injury ligament reconstruction, trauma care, and degenerative spine disorders.",
+      "verificationStatus": "verified",
+      "availableDays": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "availableSlots": [
+        "09:30 AM",
+        "11:00 AM",
+        "02:00 PM",
+        "03:30 PM",
+        "05:00 PM"
+      ],
+      "languages": [
+        "English",
+        "Hindi",
+        "Kannada"
+      ]
     }
   ],
   "patientProfiles": [
     {
       "id": "pat_prof_1",
       "userId": "usr_pat_1",
-      "abhaId": "91-4421-8890-1204",
-      "abhaAddress": "rohan.verma@abdm",
-      "dateOfBirth": "1994-06-14",
-      "gender": "male",
-      "bloodGroup": "B+",
-      "address": "Flat 402, Shanti Nilayam, 12th Main, Indiranagar, Bengaluru, Karnataka - 560038",
-      "emergencyContact": {
-        "name": "Kavita Verma",
-        "relationship": "Spouse",
-        "phone": "+91 98450 11982"
-      },
       "allergies": [
         "Penicillin",
-        "Sulfa Drugs"
+        "Sulfa Drugs",
+        "Aspirin"
       ],
       "chronicConditions": [
         "Stage 1 Essential Hypertension",
-        "Dust Allergic Rhinitis"
+        "Dust Allergic Rhinitis",
+        "Mild Cervical Spondylosis"
       ],
       "medicalHistory": [
         "Laparoscopic Appendectomy (AIIMS New Delhi, 2018)",
-        "Sprained Ankle Ligament (2022)"
+        "Sprained Ankle Ligament (2022)",
+        "Annual Cardiac Stress Test (2025)"
       ]
     },
     {
@@ -218,6 +277,46 @@
       "medicalHistory": [
         "Gallbladder Cholecystectomy (2020)"
       ]
+    },
+    {
+      "id": "pat_prof_1792942524689",
+      "userId": "usr_pat_1792942524687",
+      "abhaId": "91-8766-3489-1655",
+      "abhaAddress": "user1654@abdm",
+      "dateOfBirth": "1996-05-15",
+      "gender": "female",
+      "bloodGroup": "Not specified",
+      "address": "",
+      "emergencyContact": {
+        "name": "",
+        "relationship": "",
+        "phone": ""
+      },
+      "allergies": [],
+      "chronicConditions": [],
+      "medicalHistory": []
+    },
+    {
+      "id": "pat_prof_3",
+      "userId": "usr_pat_3",
+      "abhaId": "91-8820-7109-3401",
+      "abhaAddress": "darsh.jain@abdm",
+      "dateOfBirth": "1998-03-24",
+      "gender": "male",
+      "bloodGroup": "A+",
+      "address": "702, Skyline Towers, Outer Ring Road, Bengaluru, Karnataka - 560103",
+      "emergencyContact": {
+        "name": "Suresh Jain",
+        "relationship": "Father",
+        "phone": "+91 98200 11223"
+      },
+      "allergies": [],
+      "chronicConditions": [
+        "Post-Trauma Knee Ligament Strain"
+      ],
+      "medicalHistory": [
+        "Left Knee Arthroscopy (2023)"
+      ]
     }
   ],
   "appointments": [
@@ -236,10 +335,11 @@
       "appointmentDate": "2026-10-26",
       "appointmentTime": "11:00 AM",
       "type": "in-person",
-      "reason": "Quarterly review of ambulatory blood pressure and ECG follow-up.",
+      "reason": "Quarterly cardiology review - Blood pressure stabilization & lifestyle check",
       "status": "confirmed",
       "notes": "Please bring recent BP reading chart and morning medication log.",
-      "createdAt": "2026-10-18T10:00:00.000Z"
+      "createdAt": "2026-10-18T10:00:00.000Z",
+      "consultationNotes": "Admin Verified: Verified ECG normal sinus rhythm. Continue current antihypertensive regimen."
     },
     {
       "id": "apt_102",
@@ -322,6 +422,27 @@
       "status": "cancelled",
       "notes": "",
       "createdAt": "2026-10-25T13:40:04.467Z"
+    },
+    {
+      "id": "apt_1792942870430",
+      "patientId": "usr_pat_3",
+      "patientName": "Darsh Jain",
+      "patientEmail": "darsh.jain@arogyapulse.in",
+      "patientPhone": "+91 98200 71093",
+      "patientAge": 28,
+      "patientGender": "male",
+      "doctorId": "usr_doc_4",
+      "doctorName": "Dr. Rohan Verma, MS (Orthopedics)",
+      "doctorSpecialization": "Orthopedics",
+      "doctorClinic": "Apollo Ortho & Trauma Care, Bengaluru",
+      "doctorFee": 1000,
+      "appointmentDate": "2026-10-28",
+      "appointmentTime": "02:00 PM",
+      "type": "in-person",
+      "reason": "Post-surgery knee stability check and ligament rehab consultation",
+      "status": "pending",
+      "notes": "",
+      "createdAt": "2026-10-25T15:41:10.430Z"
     }
   ],
   "medicalRecords": [
@@ -330,12 +451,12 @@
       "patientId": "usr_pat_1",
       "doctorId": "usr_doc_1",
       "doctorName": "Dr. Rajesh K. Sharma, MD, DM",
-      "title": "Complete Lipid Profile & Fasting Blood Sugar",
+      "title": "Comprehensive Lipid Panel & Apolipoprotein-B Profile",
       "type": "blood_report",
       "fileUrl": "#download-rec-201",
       "fileName": "DrLalPathLabs_LipidProfile_Aug2026.pdf",
       "fileSize": "1.4 MB",
-      "description": "Fasting Plasma Glucose: 92 mg/dL. Total Cholesterol: 178 mg/dL, HDL: 52 mg/dL, LDL: 104 mg/dL, Triglycerides: 142 mg/dL. Serum Creatinine: 0.9 mg/dL (Normal).",
+      "description": "Admin Updated: Total Cholesterol 182 mg/dL, LDL 104 mg/dL, HDL 48 mg/dL, Triglycerides 150 mg/dL. Normal cardiac risk assessment.",
       "recordDate": "2026-08-11",
       "hospital": "Dr. Lal PathLabs (National Reference Lab, New Delhi)",
       "createdAt": "2026-08-11T16:00:00.000Z"
@@ -900,6 +1021,26 @@
   ],
   "notifications": [
     {
+      "id": "notif_1792942870432",
+      "userId": "usr_pat_3",
+      "type": "appointment_confirmation",
+      "title": "Appointment Request Submitted",
+      "message": "Your appointment with Dr. Rohan Verma, MS (Orthopedics) on 2026-10-28 at 02:00 PM has been submitted for confirmation.",
+      "isRead": false,
+      "createdAt": "2026-10-25T15:41:10.431Z",
+      "link": "/appointments"
+    },
+    {
+      "id": "notif_1792942870430",
+      "userId": "usr_doc_4",
+      "type": "appointment_confirmation",
+      "title": "New Appointment Booking Request",
+      "message": "Darsh Jain requested a in-person consultation on 2026-10-28 at 02:00 PM.",
+      "isRead": false,
+      "createdAt": "2026-10-25T15:41:10.430Z",
+      "link": "/appointments"
+    },
+    {
       "id": "notif_1792935604477",
       "userId": "usr_pat_1",
       "type": "new_prescription",
@@ -1057,6 +1198,182 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "aud_1792943793363_139",
+      "timestamp": "2026-10-25T15:56:33.363Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "MEDICAL_RECORD_UPDATED",
+      "entityType": "MEDICAL_RECORD",
+      "entityId": "rec_201",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792943793343_135",
+      "timestamp": "2026-10-25T15:56:33.343Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792943774412_523",
+      "timestamp": "2026-10-25T15:56:14.412Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792943765823_680",
+      "timestamp": "2026-10-25T15:56:05.823Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "APPOINTMENT_UPDATED_confirmed",
+      "entityType": "APPOINTMENT",
+      "entityId": "apt_101",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792943765801_223",
+      "timestamp": "2026-10-25T15:56:05.801Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792943758628_306",
+      "timestamp": "2026-10-25T15:55:58.628Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "ADMIN_PATIENT_PROFILE_UPDATED",
+      "entityType": "PATIENT_PROFILE",
+      "entityId": "usr_pat_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792943758605_86",
+      "timestamp": "2026-10-25T15:55:58.605Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792943751060_490",
+      "timestamp": "2026-10-25T15:55:51.060Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792942870432_406",
+      "timestamp": "2026-10-25T15:41:10.432Z",
+      "userId": "usr_pat_3",
+      "userName": "Darsh Jain",
+      "role": "patient",
+      "action": "APPOINTMENT_BOOKED",
+      "entityType": "APPOINTMENT",
+      "entityId": "apt_1792942870430",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792942870398_520",
+      "timestamp": "2026-10-25T15:41:10.398Z",
+      "userId": "usr_pat_3",
+      "userName": "Darsh Jain",
+      "role": "patient",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_pat_3",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792942861772_750",
+      "timestamp": "2026-10-25T15:41:01.772Z",
+      "userId": "usr_pat_3",
+      "userName": "Darsh Jain",
+      "role": "patient",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_pat_3",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792942524690_705",
+      "timestamp": "2026-10-25T15:35:24.690Z",
+      "userId": "usr_pat_1792942524687",
+      "userName": "AYUSH",
+      "role": "patient",
+      "action": "USER_REGISTERED",
+      "entityType": "USER",
+      "entityId": "usr_pat_1792942524687",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792942417078_301",
+      "timestamp": "2026-10-25T15:33:37.078Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "USER_LOGOUT",
+      "entityType": "AUTH",
+      "entityId": "usr_pat_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792941244215_909",
+      "timestamp": "2026-10-25T15:14:04.215Z",
+      "userId": "usr_admin_1",
+      "userName": "Dr. A. Swaminathan (Medical Superintendent)",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_admin_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792941240555_444",
+      "timestamp": "2026-10-25T15:14:00.555Z",
+      "userId": "usr_doc_1",
+      "userName": "Dr. Rajesh K. Sharma, MD, DM",
+      "role": "doctor",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_doc_1",
+      "ipAddress": "127.0.0.1"
+    },
+    {
+      "id": "aud_1792941237000_652",
+      "timestamp": "2026-10-25T15:13:57.000Z",
+      "userId": "usr_pat_1",
+      "userName": "Rohan Verma",
+      "role": "patient",
+      "action": "USER_LOGIN",
+      "entityType": "AUTH",
+      "entityId": "usr_pat_1",
+      "ipAddress": "127.0.0.1"
+    },
     {
       "id": "aud_1792935604477_352",
       "timestamp": "2026-10-25T13:40:04.477Z",

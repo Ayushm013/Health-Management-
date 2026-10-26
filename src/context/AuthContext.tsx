@@ -18,6 +18,19 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     description: 'Patient managing hypertension, ABHA ID (91-4421-8890-1204), vitals & prescriptions'
   },
   {
+    name: 'Darsh Jain',
+    role: 'patient',
+    email: 'darsh.jain@arogyapulse.in',
+    description: 'Patient consultation in Orthopedics & musculoskeletal trauma, ABHA ID (91-8820-7109-3401)'
+  },
+  {
+    name: 'Dr. Rohan Verma, MS',
+    role: 'doctor',
+    email: 'dr.rohan@arogyapulse.in',
+    specialty: 'Orthopedics',
+    description: 'Senior Consultant Orthopedic Surgeon at Apollo Ortho & Trauma Care, Bengaluru'
+  },
+  {
     name: 'Dr. Rajesh K. Sharma, MD, DM',
     role: 'doctor',
     email: 'dr.rajesh@arogyapulse.in',

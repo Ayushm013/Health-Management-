@@ -17,6 +17,7 @@ import {
   AuditLog,
   MetricThresholdAlert
 } from '../types/index.js';
+import { saveRecordToSupabase, deleteRecordFromSupabase } from './supabase.js';
 
 interface DatabaseSchema {
   users: (User & { passwordHash: string })[];
@@ -93,6 +94,18 @@ const SEED_DATA: DatabaseSchema = {
       updatedAt: '2026-02-01T10:15:00.000Z'
     },
     {
+      id: 'usr_doc_4',
+      name: 'Dr. Rohan Verma, MS (Orthopedics)',
+      email: 'dr.rohan@arogyapulse.in',
+      passwordHash: DOCTOR_PASSWORD_HASH,
+      phone: '+91 98455 21098',
+      role: 'doctor',
+      status: 'active',
+      profileImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80',
+      createdAt: '2026-02-05T09:00:00.000Z',
+      updatedAt: '2026-02-05T09:00:00.000Z'
+    },
+    {
       id: 'usr_pat_1',
       name: 'Rohan Verma',
       email: 'rohan@arogyapulse.in',
@@ -115,6 +128,18 @@ const SEED_DATA: DatabaseSchema = {
       profileImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
       createdAt: '2026-02-15T16:00:00.000Z',
       updatedAt: '2026-02-15T16:00:00.000Z'
+    },
+    {
+      id: 'usr_pat_3',
+      name: 'Darsh Jain',
+      email: 'darsh.jain@arogyapulse.in',
+      passwordHash: PATIENT_PASSWORD_HASH,
+      phone: '+91 98200 71093',
+      role: 'patient',
+      status: 'active',
+      profileImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      createdAt: '2026-02-18T10:00:00.000Z',
+      updatedAt: '2026-02-18T10:00:00.000Z'
     }
   ],
   doctorProfiles: [
@@ -162,6 +187,21 @@ const SEED_DATA: DatabaseSchema = {
       availableDays: ['Monday', 'Tuesday', 'Friday', 'Saturday'],
       availableSlots: ['10:00 AM', '11:30 AM', '02:30 PM', '04:00 PM'],
       languages: ['English', 'Hindi', 'Bengali']
+    },
+    {
+      id: 'doc_prof_4',
+      userId: 'usr_doc_4',
+      specialization: 'Orthopedics',
+      qualification: 'MBBS, MS (Orthopedics, AIIMS Delhi), MCh (Joint & Spine)',
+      experience: 15,
+      licenseNumber: 'KMC-71093 (Karnataka Medical Council)',
+      clinic: 'Apollo Ortho & Trauma Care, Bengaluru',
+      consultationFee: 1000,
+      bio: 'Senior Orthopedic Surgeon specializing in joint arthroplasty, sports injury ligament reconstruction, trauma care, and degenerative spine disorders.',
+      verificationStatus: 'verified',
+      availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      availableSlots: ['09:30 AM', '11:00 AM', '02:00 PM', '03:30 PM', '05:00 PM'],
+      languages: ['English', 'Hindi', 'Kannada']
     }
   ],
   patientProfiles: [
@@ -200,6 +240,24 @@ const SEED_DATA: DatabaseSchema = {
       allergies: ['Aspirin (Mild Gastro Upset)'],
       chronicConditions: ['Type-2 Diabetes Mellitus', 'Dyslipidemia'],
       medicalHistory: ['Gallbladder Cholecystectomy (2020)']
+    },
+    {
+      id: 'pat_prof_3',
+      userId: 'usr_pat_3',
+      abhaId: '91-8820-7109-3401',
+      abhaAddress: 'darsh.jain@abdm',
+      dateOfBirth: '1998-03-24',
+      gender: 'male',
+      bloodGroup: 'A+',
+      address: '702, Skyline Towers, Outer Ring Road, Bengaluru, Karnataka - 560103',
+      emergencyContact: {
+        name: 'Suresh Jain',
+        relationship: 'Father',
+        phone: '+91 98200 11223'
+      },
+      allergies: [],
+      chronicConditions: ['Post-Trauma Knee Ligament Strain'],
+      medicalHistory: ['Left Knee Arthroscopy (2023)']
     }
   ],
   appointments: [
@@ -834,6 +892,7 @@ class DatabaseManager {
   createUser(user: User & { passwordHash: string }) {
     this.data.users.push(user);
     this.persist();
+    saveRecordToSupabase('users', user);
     return user;
   }
 
@@ -842,6 +901,7 @@ class DatabaseManager {
     if (idx !== -1) {
       this.data.users[idx] = { ...this.data.users[idx], ...updates, updatedAt: new Date().toISOString() };
       this.persist();
+      saveRecordToSupabase('users', this.data.users[idx]);
       return this.data.users[idx];
     }
     return null;
@@ -852,6 +912,7 @@ class DatabaseManager {
     this.data.patientProfiles = this.data.patientProfiles.filter(p => p.userId !== id);
     this.data.doctorProfiles = this.data.doctorProfiles.filter(d => d.userId !== id);
     this.persist();
+    deleteRecordFromSupabase('users', id);
   }
 
   // Profiles
@@ -881,7 +942,9 @@ class DatabaseManager {
       this.data.patientProfiles.push(newProf);
     }
     this.persist();
-    return this.getPatientProfileByUserId(userId);
+    const updated = this.getPatientProfileByUserId(userId);
+    if (updated) saveRecordToSupabase('patient_profiles', updated);
+    return updated;
   }
 
   getDoctorProfileByUserId(userId: string) {
@@ -929,7 +992,9 @@ class DatabaseManager {
       this.data.doctorProfiles.push(newProf);
     }
     this.persist();
-    return this.getDoctorProfileByUserId(userId);
+    const updated = this.getDoctorProfileByUserId(userId);
+    if (updated) saveRecordToSupabase('doctor_profiles', updated);
+    return updated;
   }
 
   // Appointments
@@ -948,6 +1013,7 @@ class DatabaseManager {
     }
     this.data.appointments.push(apt);
     this.persist();
+    saveRecordToSupabase('appointments', apt);
     return apt;
   }
 
@@ -956,6 +1022,7 @@ class DatabaseManager {
     if (idx !== -1) {
       this.data.appointments[idx] = { ...this.data.appointments[idx], ...updates };
       this.persist();
+      saveRecordToSupabase('appointments', this.data.appointments[idx]);
       return this.data.appointments[idx];
     }
     return null;
@@ -964,20 +1031,35 @@ class DatabaseManager {
   deleteAppointment(id: string) {
     this.data.appointments = this.data.appointments.filter(a => a.id !== id);
     this.persist();
+    deleteRecordFromSupabase('appointments', id);
   }
 
   // Medical Records
   getMedicalRecords() { return this.data.medicalRecords; }
+  getMedicalRecordById(id: string) { return this.data.medicalRecords.find(r => r.id === id); }
   
   createMedicalRecord(rec: MedicalRecord) {
     this.data.medicalRecords.push(rec);
     this.persist();
+    saveRecordToSupabase('medical_records', rec);
     return rec;
+  }
+
+  updateMedicalRecord(id: string, updates: Partial<MedicalRecord>) {
+    const idx = this.data.medicalRecords.findIndex(r => r.id === id);
+    if (idx !== -1) {
+      this.data.medicalRecords[idx] = { ...this.data.medicalRecords[idx], ...updates };
+      this.persist();
+      saveRecordToSupabase('medical_records', this.data.medicalRecords[idx]);
+      return this.data.medicalRecords[idx];
+    }
+    return null;
   }
 
   deleteMedicalRecord(id: string) {
     this.data.medicalRecords = this.data.medicalRecords.filter(r => r.id !== id);
     this.persist();
+    deleteRecordFromSupabase('medical_records', id);
   }
 
   // Prescriptions
@@ -987,7 +1069,25 @@ class DatabaseManager {
   createPrescription(rx: Prescription) {
     this.data.prescriptions.push(rx);
     this.persist();
+    saveRecordToSupabase('prescriptions', rx);
     return rx;
+  }
+
+  updatePrescription(id: string, updates: Partial<Prescription>) {
+    const idx = this.data.prescriptions.findIndex(p => p.id === id);
+    if (idx !== -1) {
+      this.data.prescriptions[idx] = { ...this.data.prescriptions[idx], ...updates };
+      this.persist();
+      saveRecordToSupabase('prescriptions', this.data.prescriptions[idx]);
+      return this.data.prescriptions[idx];
+    }
+    return null;
+  }
+
+  deletePrescription(id: string) {
+    this.data.prescriptions = this.data.prescriptions.filter(p => p.id !== id);
+    this.persist();
+    deleteRecordFromSupabase('prescriptions', id);
   }
 
   // Medications
@@ -996,6 +1096,7 @@ class DatabaseManager {
   createMedication(med: Medication) {
     this.data.medications.push(med);
     this.persist();
+    saveRecordToSupabase('medications', med);
     return med;
   }
 
@@ -1004,6 +1105,7 @@ class DatabaseManager {
     if (idx !== -1) {
       this.data.medications[idx] = { ...this.data.medications[idx], ...updates };
       this.persist();
+      saveRecordToSupabase('medications', this.data.medications[idx]);
       return this.data.medications[idx];
     }
     return null;
@@ -1012,6 +1114,7 @@ class DatabaseManager {
   deleteMedication(id: string) {
     this.data.medications = this.data.medications.filter(m => m.id !== id);
     this.persist();
+    deleteRecordFromSupabase('medications', id);
   }
 
   // Health Metrics
@@ -1020,12 +1123,14 @@ class DatabaseManager {
   createHealthMetric(metric: HealthMetric) {
     this.data.healthMetrics.push(metric);
     this.persist();
+    saveRecordToSupabase('health_metrics', metric);
     return metric;
   }
 
   deleteHealthMetric(id: string) {
     this.data.healthMetrics = this.data.healthMetrics.filter(m => m.id !== id);
     this.persist();
+    deleteRecordFromSupabase('health_metrics', id);
   }
 
   // Health Goals
@@ -1034,6 +1139,7 @@ class DatabaseManager {
   createHealthGoal(goal: HealthGoal) {
     this.data.healthGoals.push(goal);
     this.persist();
+    saveRecordToSupabase('health_goals', goal);
     return goal;
   }
 
@@ -1042,6 +1148,7 @@ class DatabaseManager {
     if (idx !== -1) {
       this.data.healthGoals[idx] = { ...this.data.healthGoals[idx], ...updates };
       this.persist();
+      saveRecordToSupabase('health_goals', this.data.healthGoals[idx]);
       return this.data.healthGoals[idx];
     }
     return null;
@@ -1050,6 +1157,7 @@ class DatabaseManager {
   deleteHealthGoal(id: string) {
     this.data.healthGoals = this.data.healthGoals.filter(g => g.id !== id);
     this.persist();
+    deleteRecordFromSupabase('health_goals', id);
   }
 
   // Daily Wellness
@@ -1063,6 +1171,7 @@ class DatabaseManager {
       this.data.dailyWellness.push(wellness);
     }
     this.persist();
+    saveRecordToSupabase('daily_wellness', wellness);
     return wellness;
   }
 
@@ -1072,6 +1181,7 @@ class DatabaseManager {
   createNotification(notif: Notification) {
     this.data.notifications.unshift(notif);
     this.persist();
+    saveRecordToSupabase('notifications', notif);
     return notif;
   }
 
@@ -1103,6 +1213,7 @@ class DatabaseManager {
   createMessage(msg: Message) {
     this.data.messages.push(msg);
     this.persist();
+    saveRecordToSupabase('messages', msg);
     return msg;
   }
 
@@ -1130,6 +1241,7 @@ class DatabaseManager {
       this.data.auditLogs.pop();
     }
     this.persist();
+    saveRecordToSupabase('audit_logs', entry);
     return entry;
   }
 
@@ -1146,6 +1258,7 @@ class DatabaseManager {
     if (!this.data.metricThresholds) this.data.metricThresholds = [];
     this.data.metricThresholds.push(alert);
     this.persist();
+    saveRecordToSupabase('metric_thresholds', alert);
     return alert;
   }
 
@@ -1155,6 +1268,7 @@ class DatabaseManager {
     if (idx !== -1) {
       this.data.metricThresholds[idx] = { ...this.data.metricThresholds[idx], ...updates };
       this.persist();
+      saveRecordToSupabase('metric_thresholds', this.data.metricThresholds[idx]);
       return this.data.metricThresholds[idx];
     }
     return null;
@@ -1164,6 +1278,12 @@ class DatabaseManager {
     if (!this.data.metricThresholds) this.data.metricThresholds = [];
     this.data.metricThresholds = this.data.metricThresholds.filter(t => t.id !== id);
     this.persist();
+    deleteRecordFromSupabase('metric_thresholds', id);
+  }
+
+  // Export full data snapshot for batch cloud syncing
+  getAllData() {
+    return this.data;
   }
 }
 

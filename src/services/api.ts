@@ -213,6 +213,13 @@ class ApiService {
     });
   }
 
+  async updateMedicalRecord(id: string, updates: Partial<MedicalRecord>) {
+    return this.request<{ message: string; record: MedicalRecord }>(`/medical-records/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(updates)
+    });
+  }
+
   async deleteMedicalRecord(id: string) {
     return this.request<{ message: string }>(`/medical-records/${id}`, {
       method: 'DELETE'
@@ -226,6 +233,19 @@ class ApiService {
 
   async getPrescriptionById(id: string) {
     return this.request<{ prescription: Prescription }>(`/prescriptions/${id}`);
+  }
+
+  async updatePrescription(id: string, updates: Partial<Prescription>) {
+    return this.request<{ message: string; prescription: Prescription }>(`/prescriptions/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(updates)
+    });
+  }
+
+  async deletePrescription(id: string) {
+    return this.request<{ message: string }>(`/prescriptions/${id}`, {
+      method: 'DELETE'
+    });
   }
 
   async createPrescription(data: {
@@ -445,11 +465,106 @@ class ApiService {
     return this.request<{ logs: AuditLog[] }>('/admin/audit-logs');
   }
 
+  async getAdminAllData() {
+    return this.request<{
+      appointments: Appointment[];
+      medicalRecords: MedicalRecord[];
+      prescriptions: Prescription[];
+      patients: Array<User & { profile?: PatientProfile; appointmentCount: number; recordsCount: number; prescriptionCount: number }>;
+      doctors: Array<User & { profile?: DoctorProfile; appointmentCount: number }>;
+    }>('/admin/all-data');
+  }
+
+  async updatePatientByAdmin(patientId: string, data: any) {
+    return this.request<{ message: string; user: User; profile: PatientProfile }>(`/admin/patients/${patientId}/profile`, {
+      method: 'PUT',
+      body: JSON.stringify(data)
+    });
+  }
+
+  async deleteAppointmentPermanent(id: string) {
+    return this.request<{ message: string }>(`/appointments/${id}?hard=true&action=delete`, {
+      method: 'DELETE'
+    });
+  }
+
   // AI Health Summary (Gemini API)
   async getAiHealthSummary(patientId?: string) {
     return this.request<{ summary: AiHealthSummary }>('/ai/health-summary', {
       method: 'POST',
       body: JSON.stringify(patientId ? { patientId } : {})
+    });
+  }
+
+  // Supabase Cloud Connection
+  async getSupabaseStatus() {
+    return this.request<{
+      connected: boolean;
+      projectId: string;
+      projectUrl: string;
+      keyMasked: string;
+      latencyMs: number;
+      httpStatus?: number;
+      mode: string;
+      message: string;
+      timestamp: string;
+    }>('/supabase/status');
+  }
+
+  async testSupabasePing() {
+    return this.request<{
+      success: boolean;
+      data: {
+        connected: boolean;
+        projectId: string;
+        projectUrl: string;
+        keyMasked: string;
+        latencyMs: number;
+        mode: string;
+        message: string;
+        timestamp: string;
+      };
+    }>('/supabase/ping', {
+      method: 'POST'
+    });
+  }
+
+  async getSupabaseStats() {
+    return this.request<{
+      projectId: string;
+      projectUrl: string;
+      totalAttempts: number;
+      successfulSyncs: number;
+      recentLogs: Array<{
+        id: string;
+        table: string;
+        recordId: string;
+        action: string;
+        status: string;
+        details?: string;
+        timestamp: string;
+      }>;
+      activeConfig: {
+        url: string;
+        keyMasked: string;
+      };
+    }>('/supabase/stats');
+  }
+
+  async getSupabaseSqlSchema() {
+    const res = await fetch('/api/supabase/schema');
+    return res.text();
+  }
+
+  async syncAllToSupabase() {
+    return this.request<{
+      success: boolean;
+      message: string;
+      totalSynced: number;
+      results: Record<string, number>;
+      errors: string[];
+    }>('/supabase/sync-all', {
+      method: 'POST'
     });
   }
 }

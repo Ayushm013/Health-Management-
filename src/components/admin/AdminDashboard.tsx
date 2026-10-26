@@ -68,18 +68,30 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
-            onClick={() => onNavigate('users')}
-            className="px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-2xs transition-colors"
+            onClick={() => onNavigate('admin-panel')}
+            className="px-3.5 py-2 text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer"
           >
-            User Directory
+            <span>Master Admin Control Panel →</span>
           </button>
           <button
-            onClick={() => onNavigate('doctors')}
-            className="px-3.5 py-2 text-xs font-semibold text-white bg-teal-600 hover:bg-teal-700 rounded-lg shadow-2xs transition-colors"
+            onClick={() => onNavigate('appointments')}
+            className="px-3 py-2 text-xs font-semibold text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-xl transition-colors cursor-pointer"
           >
-            Doctor Verification
+            All Appointments
+          </button>
+          <button
+            onClick={() => onNavigate('records')}
+            className="px-3 py-2 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl transition-colors cursor-pointer"
+          >
+            Medical Records
+          </button>
+          <button
+            onClick={() => onNavigate('patients-control')}
+            className="px-3 py-2 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl transition-colors cursor-pointer"
+          >
+            Patient Profiles
           </button>
         </div>
       </div>
